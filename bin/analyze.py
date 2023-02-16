@@ -7,7 +7,9 @@ import argparse
 import argcomplete
 parser = argparse.ArgumentParser()
 parser.add_argument("output_dir", type=str, nargs="+")
-parser.add_argument("--plotname", type=str, nargs="?", default="boxplot")
+parser.add_argument("--epoch", type=str, default="cv")
+parser.add_argument("--plotname", type=str, default="boxplot")
+parser.add_argument("--plotlims", type=float, nargs=2, default=[0.0,0.0])
 argcomplete.autocomplete(parser)
 args = parser.parse_args()
 import sys
@@ -22,9 +24,9 @@ from matplotlib.ticker import MultipleLocator
 
 if __name__ == "__main__":
 
-    npzs = glob(f"{args.output_dir[0]}/*_cv.npz",recursive=True)
+    npzs = glob(f"{args.output_dir[0]}/*_{args.epoch}.npz",recursive=True)
     # Sort npzs found by glob, so that boxplot is logical and pleasant
-    npzs.sort(key=lambda x: int(os.path.basename(x).split("_cv.")[0][2:]))
+    npzs.sort(key=lambda x: int(os.path.basename(x).split(f"_{args.epoch}.")[0][2:]))
     # print(f"{npzs = }")
     # print(f"{len(npzs) = }")
 
@@ -80,6 +82,13 @@ if __name__ == "__main__":
     ax.grid(which="major",axis='y',linewidth=1.2)
     ax.yaxis.set_major_locator(MultipleLocator(0.1))
     ax.axhline(y=0,color='r')
+    
+    if not args.plotlims == [0.0,0.0]:
+        print(f"{args.plotlims = }")
+        lower = args.plotlims[0]
+        upper = args.plotlims[1]
+        ax.set_ybound(lower=lower,upper=upper)
+
     # plt.tight_layout()
 
     figroot = args.output_dir[0].split('/')[:-3]
