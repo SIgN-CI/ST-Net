@@ -80,7 +80,8 @@ class Spatial(torch.utils.data.Dataset):
         self.slide = collections.defaultdict(dict)
         # TODO: this can be parallelized
         for (patient, section) in set([(d.split("/")[-2], d.split("/")[-1].split("_")[0]) for d in self.dataset]):
-            self.slide[patient][section] = openslide.open_slide("{}/{}/{}/{}_{}.tif".format(stnet.config.SPATIAL_RAW_ROOT, self.subtype[patient], patient, patient, section))
+            # self.slide[patient][section] = openslide.open_slide("{}/{}/{}/{}_{}.tif".format(stnet.config.SPATIAL_RAW_ROOT, self.subtype[patient], patient, patient, section))
+            self.slide[patient][section] = openslide.open_slide("{}HE_{}_{}.tif".format(stnet.config.SPATIAL_RAW_ROOT, patient, section))
 
         if gene_filter is None or gene_filter == "none":
             self.gene_filter = None

@@ -70,7 +70,7 @@ def get_spatial_patients():
     The keys of the dict are patient names (str), and the values are lists of
     section names (str).
     """
-    patient_section = map(lambda x: x.split("/")[-1].split(".")[0].split("_"), glob.glob(stnet.config.SPATIAL_RAW_ROOT + "/*/*/*.jpg"))
+    patient_section = map(lambda x: x.split("/")[-1].split(".")[0].split("_")[1:], glob.glob(stnet.config.SPATIAL_RAW_ROOT + "*.tif"))
     patient = collections.defaultdict(list)
     for (p, s) in patient_section:
         patient[p].append(s)
