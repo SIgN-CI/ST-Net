@@ -1,0 +1,729 @@
+model.state_dict().keys()=
+[  0] module.features.conv0.weight
+[  1] module.features.norm0.weight
+[  2] module.features.norm0.bias
+[  3] module.features.norm0.running_mean
+[  4] module.features.norm0.running_var
+[  5] module.features.norm0.num_batches_tracked
+[  6] module.features.denseblock1.denselayer1.norm1.weight
+[  7] module.features.denseblock1.denselayer1.norm1.bias
+[  8] module.features.denseblock1.denselayer1.norm1.running_mean
+[  9] module.features.denseblock1.denselayer1.norm1.running_var
+[ 10] module.features.denseblock1.denselayer1.norm1.num_batches_tracked
+[ 11] module.features.denseblock1.denselayer1.conv1.weight
+[ 12] module.features.denseblock1.denselayer1.norm2.weight
+[ 13] module.features.denseblock1.denselayer1.norm2.bias
+[ 14] module.features.denseblock1.denselayer1.norm2.running_mean
+[ 15] module.features.denseblock1.denselayer1.norm2.running_var
+[ 16] module.features.denseblock1.denselayer1.norm2.num_batches_tracked
+[ 17] module.features.denseblock1.denselayer1.conv2.weight
+[ 18] module.features.denseblock1.denselayer2.norm1.weight
+[ 19] module.features.denseblock1.denselayer2.norm1.bias
+[ 20] module.features.denseblock1.denselayer2.norm1.running_mean
+[ 21] module.features.denseblock1.denselayer2.norm1.running_var
+[ 22] module.features.denseblock1.denselayer2.norm1.num_batches_tracked
+[ 23] module.features.denseblock1.denselayer2.conv1.weight
+[ 24] module.features.denseblock1.denselayer2.norm2.weight
+[ 25] module.features.denseblock1.denselayer2.norm2.bias
+[ 26] module.features.denseblock1.denselayer2.norm2.running_mean
+[ 27] module.features.denseblock1.denselayer2.norm2.running_var
+[ 28] module.features.denseblock1.denselayer2.norm2.num_batches_tracked
+[ 29] module.features.denseblock1.denselayer2.conv2.weight
+[ 30] module.features.denseblock1.denselayer3.norm1.weight
+[ 31] module.features.denseblock1.denselayer3.norm1.bias
+[ 32] module.features.denseblock1.denselayer3.norm1.running_mean
+[ 33] module.features.denseblock1.denselayer3.norm1.running_var
+[ 34] module.features.denseblock1.denselayer3.norm1.num_batches_tracked
+[ 35] module.features.denseblock1.denselayer3.conv1.weight
+[ 36] module.features.denseblock1.denselayer3.norm2.weight
+[ 37] module.features.denseblock1.denselayer3.norm2.bias
+[ 38] module.features.denseblock1.denselayer3.norm2.running_mean
+[ 39] module.features.denseblock1.denselayer3.norm2.running_var
+[ 40] module.features.denseblock1.denselayer3.norm2.num_batches_tracked
+[ 41] module.features.denseblock1.denselayer3.conv2.weight
+[ 42] module.features.denseblock1.denselayer4.norm1.weight
+[ 43] module.features.denseblock1.denselayer4.norm1.bias
+[ 44] module.features.denseblock1.denselayer4.norm1.running_mean
+[ 45] module.features.denseblock1.denselayer4.norm1.running_var
+[ 46] module.features.denseblock1.denselayer4.norm1.num_batches_tracked
+[ 47] module.features.denseblock1.denselayer4.conv1.weight
+[ 48] module.features.denseblock1.denselayer4.norm2.weight
+[ 49] module.features.denseblock1.denselayer4.norm2.bias
+[ 50] module.features.denseblock1.denselayer4.norm2.running_mean
+[ 51] module.features.denseblock1.denselayer4.norm2.running_var
+[ 52] module.features.denseblock1.denselayer4.norm2.num_batches_tracked
+[ 53] module.features.denseblock1.denselayer4.conv2.weight
+[ 54] module.features.denseblock1.denselayer5.norm1.weight
+[ 55] module.features.denseblock1.denselayer5.norm1.bias
+[ 56] module.features.denseblock1.denselayer5.norm1.running_mean
+[ 57] module.features.denseblock1.denselayer5.norm1.running_var
+[ 58] module.features.denseblock1.denselayer5.norm1.num_batches_tracked
+[ 59] module.features.denseblock1.denselayer5.conv1.weight
+[ 60] module.features.denseblock1.denselayer5.norm2.weight
+[ 61] module.features.denseblock1.denselayer5.norm2.bias
+[ 62] module.features.denseblock1.denselayer5.norm2.running_mean
+[ 63] module.features.denseblock1.denselayer5.norm2.running_var
+[ 64] module.features.denseblock1.denselayer5.norm2.num_batches_tracked
+[ 65] module.features.denseblock1.denselayer5.conv2.weight
+[ 66] module.features.denseblock1.denselayer6.norm1.weight
+[ 67] module.features.denseblock1.denselayer6.norm1.bias
+[ 68] module.features.denseblock1.denselayer6.norm1.running_mean
+[ 69] module.features.denseblock1.denselayer6.norm1.running_var
+[ 70] module.features.denseblock1.denselayer6.norm1.num_batches_tracked
+[ 71] module.features.denseblock1.denselayer6.conv1.weight
+[ 72] module.features.denseblock1.denselayer6.norm2.weight
+[ 73] module.features.denseblock1.denselayer6.norm2.bias
+[ 74] module.features.denseblock1.denselayer6.norm2.running_mean
+[ 75] module.features.denseblock1.denselayer6.norm2.running_var
+[ 76] module.features.denseblock1.denselayer6.norm2.num_batches_tracked
+[ 77] module.features.denseblock1.denselayer6.conv2.weight
+[ 78] module.features.transition1.norm.weight
+[ 79] module.features.transition1.norm.bias
+[ 80] module.features.transition1.norm.running_mean
+[ 81] module.features.transition1.norm.running_var
+[ 82] module.features.transition1.norm.num_batches_tracked
+[ 83] module.features.transition1.conv.weight
+[ 84] module.features.denseblock2.denselayer1.norm1.weight
+[ 85] module.features.denseblock2.denselayer1.norm1.bias
+[ 86] module.features.denseblock2.denselayer1.norm1.running_mean
+[ 87] module.features.denseblock2.denselayer1.norm1.running_var
+[ 88] module.features.denseblock2.denselayer1.norm1.num_batches_tracked
+[ 89] module.features.denseblock2.denselayer1.conv1.weight
+[ 90] module.features.denseblock2.denselayer1.norm2.weight
+[ 91] module.features.denseblock2.denselayer1.norm2.bias
+[ 92] module.features.denseblock2.denselayer1.norm2.running_mean
+[ 93] module.features.denseblock2.denselayer1.norm2.running_var
+[ 94] module.features.denseblock2.denselayer1.norm2.num_batches_tracked
+[ 95] module.features.denseblock2.denselayer1.conv2.weight
+[ 96] module.features.denseblock2.denselayer2.norm1.weight
+[ 97] module.features.denseblock2.denselayer2.norm1.bias
+[ 98] module.features.denseblock2.denselayer2.norm1.running_mean
+[ 99] module.features.denseblock2.denselayer2.norm1.running_var
+[100] module.features.denseblock2.denselayer2.norm1.num_batches_tracked
+[101] module.features.denseblock2.denselayer2.conv1.weight
+[102] module.features.denseblock2.denselayer2.norm2.weight
+[103] module.features.denseblock2.denselayer2.norm2.bias
+[104] module.features.denseblock2.denselayer2.norm2.running_mean
+[105] module.features.denseblock2.denselayer2.norm2.running_var
+[106] module.features.denseblock2.denselayer2.norm2.num_batches_tracked
+[107] module.features.denseblock2.denselayer2.conv2.weight
+[108] module.features.denseblock2.denselayer3.norm1.weight
+[109] module.features.denseblock2.denselayer3.norm1.bias
+[110] module.features.denseblock2.denselayer3.norm1.running_mean
+[111] module.features.denseblock2.denselayer3.norm1.running_var
+[112] module.features.denseblock2.denselayer3.norm1.num_batches_tracked
+[113] module.features.denseblock2.denselayer3.conv1.weight
+[114] module.features.denseblock2.denselayer3.norm2.weight
+[115] module.features.denseblock2.denselayer3.norm2.bias
+[116] module.features.denseblock2.denselayer3.norm2.running_mean
+[117] module.features.denseblock2.denselayer3.norm2.running_var
+[118] module.features.denseblock2.denselayer3.norm2.num_batches_tracked
+[119] module.features.denseblock2.denselayer3.conv2.weight
+[120] module.features.denseblock2.denselayer4.norm1.weight
+[121] module.features.denseblock2.denselayer4.norm1.bias
+[122] module.features.denseblock2.denselayer4.norm1.running_mean
+[123] module.features.denseblock2.denselayer4.norm1.running_var
+[124] module.features.denseblock2.denselayer4.norm1.num_batches_tracked
+[125] module.features.denseblock2.denselayer4.conv1.weight
+[126] module.features.denseblock2.denselayer4.norm2.weight
+[127] module.features.denseblock2.denselayer4.norm2.bias
+[128] module.features.denseblock2.denselayer4.norm2.running_mean
+[129] module.features.denseblock2.denselayer4.norm2.running_var
+[130] module.features.denseblock2.denselayer4.norm2.num_batches_tracked
+[131] module.features.denseblock2.denselayer4.conv2.weight
+[132] module.features.denseblock2.denselayer5.norm1.weight
+[133] module.features.denseblock2.denselayer5.norm1.bias
+[134] module.features.denseblock2.denselayer5.norm1.running_mean
+[135] module.features.denseblock2.denselayer5.norm1.running_var
+[136] module.features.denseblock2.denselayer5.norm1.num_batches_tracked
+[137] module.features.denseblock2.denselayer5.conv1.weight
+[138] module.features.denseblock2.denselayer5.norm2.weight
+[139] module.features.denseblock2.denselayer5.norm2.bias
+[140] module.features.denseblock2.denselayer5.norm2.running_mean
+[141] module.features.denseblock2.denselayer5.norm2.running_var
+[142] module.features.denseblock2.denselayer5.norm2.num_batches_tracked
+[143] module.features.denseblock2.denselayer5.conv2.weight
+[144] module.features.denseblock2.denselayer6.norm1.weight
+[145] module.features.denseblock2.denselayer6.norm1.bias
+[146] module.features.denseblock2.denselayer6.norm1.running_mean
+[147] module.features.denseblock2.denselayer6.norm1.running_var
+[148] module.features.denseblock2.denselayer6.norm1.num_batches_tracked
+[149] module.features.denseblock2.denselayer6.conv1.weight
+[150] module.features.denseblock2.denselayer6.norm2.weight
+[151] module.features.denseblock2.denselayer6.norm2.bias
+[152] module.features.denseblock2.denselayer6.norm2.running_mean
+[153] module.features.denseblock2.denselayer6.norm2.running_var
+[154] module.features.denseblock2.denselayer6.norm2.num_batches_tracked
+[155] module.features.denseblock2.denselayer6.conv2.weight
+[156] module.features.denseblock2.denselayer7.norm1.weight
+[157] module.features.denseblock2.denselayer7.norm1.bias
+[158] module.features.denseblock2.denselayer7.norm1.running_mean
+[159] module.features.denseblock2.denselayer7.norm1.running_var
+[160] module.features.denseblock2.denselayer7.norm1.num_batches_tracked
+[161] module.features.denseblock2.denselayer7.conv1.weight
+[162] module.features.denseblock2.denselayer7.norm2.weight
+[163] module.features.denseblock2.denselayer7.norm2.bias
+[164] module.features.denseblock2.denselayer7.norm2.running_mean
+[165] module.features.denseblock2.denselayer7.norm2.running_var
+[166] module.features.denseblock2.denselayer7.norm2.num_batches_tracked
+[167] module.features.denseblock2.denselayer7.conv2.weight
+[168] module.features.denseblock2.denselayer8.norm1.weight
+[169] module.features.denseblock2.denselayer8.norm1.bias
+[170] module.features.denseblock2.denselayer8.norm1.running_mean
+[171] module.features.denseblock2.denselayer8.norm1.running_var
+[172] module.features.denseblock2.denselayer8.norm1.num_batches_tracked
+[173] module.features.denseblock2.denselayer8.conv1.weight
+[174] module.features.denseblock2.denselayer8.norm2.weight
+[175] module.features.denseblock2.denselayer8.norm2.bias
+[176] module.features.denseblock2.denselayer8.norm2.running_mean
+[177] module.features.denseblock2.denselayer8.norm2.running_var
+[178] module.features.denseblock2.denselayer8.norm2.num_batches_tracked
+[179] module.features.denseblock2.denselayer8.conv2.weight
+[180] module.features.denseblock2.denselayer9.norm1.weight
+[181] module.features.denseblock2.denselayer9.norm1.bias
+[182] module.features.denseblock2.denselayer9.norm1.running_mean
+[183] module.features.denseblock2.denselayer9.norm1.running_var
+[184] module.features.denseblock2.denselayer9.norm1.num_batches_tracked
+[185] module.features.denseblock2.denselayer9.conv1.weight
+[186] module.features.denseblock2.denselayer9.norm2.weight
+[187] module.features.denseblock2.denselayer9.norm2.bias
+[188] module.features.denseblock2.denselayer9.norm2.running_mean
+[189] module.features.denseblock2.denselayer9.norm2.running_var
+[190] module.features.denseblock2.denselayer9.norm2.num_batches_tracked
+[191] module.features.denseblock2.denselayer9.conv2.weight
+[192] module.features.denseblock2.denselayer10.norm1.weight
+[193] module.features.denseblock2.denselayer10.norm1.bias
+[194] module.features.denseblock2.denselayer10.norm1.running_mean
+[195] module.features.denseblock2.denselayer10.norm1.running_var
+[196] module.features.denseblock2.denselayer10.norm1.num_batches_tracked
+[197] module.features.denseblock2.denselayer10.conv1.weight
+[198] module.features.denseblock2.denselayer10.norm2.weight
+[199] module.features.denseblock2.denselayer10.norm2.bias
+[200] module.features.denseblock2.denselayer10.norm2.running_mean
+[201] module.features.denseblock2.denselayer10.norm2.running_var
+[202] module.features.denseblock2.denselayer10.norm2.num_batches_tracked
+[203] module.features.denseblock2.denselayer10.conv2.weight
+[204] module.features.denseblock2.denselayer11.norm1.weight
+[205] module.features.denseblock2.denselayer11.norm1.bias
+[206] module.features.denseblock2.denselayer11.norm1.running_mean
+[207] module.features.denseblock2.denselayer11.norm1.running_var
+[208] module.features.denseblock2.denselayer11.norm1.num_batches_tracked
+[209] module.features.denseblock2.denselayer11.conv1.weight
+[210] module.features.denseblock2.denselayer11.norm2.weight
+[211] module.features.denseblock2.denselayer11.norm2.bias
+[212] module.features.denseblock2.denselayer11.norm2.running_mean
+[213] module.features.denseblock2.denselayer11.norm2.running_var
+[214] module.features.denseblock2.denselayer11.norm2.num_batches_tracked
+[215] module.features.denseblock2.denselayer11.conv2.weight
+[216] module.features.denseblock2.denselayer12.norm1.weight
+[217] module.features.denseblock2.denselayer12.norm1.bias
+[218] module.features.denseblock2.denselayer12.norm1.running_mean
+[219] module.features.denseblock2.denselayer12.norm1.running_var
+[220] module.features.denseblock2.denselayer12.norm1.num_batches_tracked
+[221] module.features.denseblock2.denselayer12.conv1.weight
+[222] module.features.denseblock2.denselayer12.norm2.weight
+[223] module.features.denseblock2.denselayer12.norm2.bias
+[224] module.features.denseblock2.denselayer12.norm2.running_mean
+[225] module.features.denseblock2.denselayer12.norm2.running_var
+[226] module.features.denseblock2.denselayer12.norm2.num_batches_tracked
+[227] module.features.denseblock2.denselayer12.conv2.weight
+[228] module.features.transition2.norm.weight
+[229] module.features.transition2.norm.bias
+[230] module.features.transition2.norm.running_mean
+[231] module.features.transition2.norm.running_var
+[232] module.features.transition2.norm.num_batches_tracked
+[233] module.features.transition2.conv.weight
+[234] module.features.denseblock3.denselayer1.norm1.weight
+[235] module.features.denseblock3.denselayer1.norm1.bias
+[236] module.features.denseblock3.denselayer1.norm1.running_mean
+[237] module.features.denseblock3.denselayer1.norm1.running_var
+[238] module.features.denseblock3.denselayer1.norm1.num_batches_tracked
+[239] module.features.denseblock3.denselayer1.conv1.weight
+[240] module.features.denseblock3.denselayer1.norm2.weight
+[241] module.features.denseblock3.denselayer1.norm2.bias
+[242] module.features.denseblock3.denselayer1.norm2.running_mean
+[243] module.features.denseblock3.denselayer1.norm2.running_var
+[244] module.features.denseblock3.denselayer1.norm2.num_batches_tracked
+[245] module.features.denseblock3.denselayer1.conv2.weight
+[246] module.features.denseblock3.denselayer2.norm1.weight
+[247] module.features.denseblock3.denselayer2.norm1.bias
+[248] module.features.denseblock3.denselayer2.norm1.running_mean
+[249] module.features.denseblock3.denselayer2.norm1.running_var
+[250] module.features.denseblock3.denselayer2.norm1.num_batches_tracked
+[251] module.features.denseblock3.denselayer2.conv1.weight
+[252] module.features.denseblock3.denselayer2.norm2.weight
+[253] module.features.denseblock3.denselayer2.norm2.bias
+[254] module.features.denseblock3.denselayer2.norm2.running_mean
+[255] module.features.denseblock3.denselayer2.norm2.running_var
+[256] module.features.denseblock3.denselayer2.norm2.num_batches_tracked
+[257] module.features.denseblock3.denselayer2.conv2.weight
+[258] module.features.denseblock3.denselayer3.norm1.weight
+[259] module.features.denseblock3.denselayer3.norm1.bias
+[260] module.features.denseblock3.denselayer3.norm1.running_mean
+[261] module.features.denseblock3.denselayer3.norm1.running_var
+[262] module.features.denseblock3.denselayer3.norm1.num_batches_tracked
+[263] module.features.denseblock3.denselayer3.conv1.weight
+[264] module.features.denseblock3.denselayer3.norm2.weight
+[265] module.features.denseblock3.denselayer3.norm2.bias
+[266] module.features.denseblock3.denselayer3.norm2.running_mean
+[267] module.features.denseblock3.denselayer3.norm2.running_var
+[268] module.features.denseblock3.denselayer3.norm2.num_batches_tracked
+[269] module.features.denseblock3.denselayer3.conv2.weight
+[270] module.features.denseblock3.denselayer4.norm1.weight
+[271] module.features.denseblock3.denselayer4.norm1.bias
+[272] module.features.denseblock3.denselayer4.norm1.running_mean
+[273] module.features.denseblock3.denselayer4.norm1.running_var
+[274] module.features.denseblock3.denselayer4.norm1.num_batches_tracked
+[275] module.features.denseblock3.denselayer4.conv1.weight
+[276] module.features.denseblock3.denselayer4.norm2.weight
+[277] module.features.denseblock3.denselayer4.norm2.bias
+[278] module.features.denseblock3.denselayer4.norm2.running_mean
+[279] module.features.denseblock3.denselayer4.norm2.running_var
+[280] module.features.denseblock3.denselayer4.norm2.num_batches_tracked
+[281] module.features.denseblock3.denselayer4.conv2.weight
+[282] module.features.denseblock3.denselayer5.norm1.weight
+[283] module.features.denseblock3.denselayer5.norm1.bias
+[284] module.features.denseblock3.denselayer5.norm1.running_mean
+[285] module.features.denseblock3.denselayer5.norm1.running_var
+[286] module.features.denseblock3.denselayer5.norm1.num_batches_tracked
+[287] module.features.denseblock3.denselayer5.conv1.weight
+[288] module.features.denseblock3.denselayer5.norm2.weight
+[289] module.features.denseblock3.denselayer5.norm2.bias
+[290] module.features.denseblock3.denselayer5.norm2.running_mean
+[291] module.features.denseblock3.denselayer5.norm2.running_var
+[292] module.features.denseblock3.denselayer5.norm2.num_batches_tracked
+[293] module.features.denseblock3.denselayer5.conv2.weight
+[294] module.features.denseblock3.denselayer6.norm1.weight
+[295] module.features.denseblock3.denselayer6.norm1.bias
+[296] module.features.denseblock3.denselayer6.norm1.running_mean
+[297] module.features.denseblock3.denselayer6.norm1.running_var
+[298] module.features.denseblock3.denselayer6.norm1.num_batches_tracked
+[299] module.features.denseblock3.denselayer6.conv1.weight
+[300] module.features.denseblock3.denselayer6.norm2.weight
+[301] module.features.denseblock3.denselayer6.norm2.bias
+[302] module.features.denseblock3.denselayer6.norm2.running_mean
+[303] module.features.denseblock3.denselayer6.norm2.running_var
+[304] module.features.denseblock3.denselayer6.norm2.num_batches_tracked
+[305] module.features.denseblock3.denselayer6.conv2.weight
+[306] module.features.denseblock3.denselayer7.norm1.weight
+[307] module.features.denseblock3.denselayer7.norm1.bias
+[308] module.features.denseblock3.denselayer7.norm1.running_mean
+[309] module.features.denseblock3.denselayer7.norm1.running_var
+[310] module.features.denseblock3.denselayer7.norm1.num_batches_tracked
+[311] module.features.denseblock3.denselayer7.conv1.weight
+[312] module.features.denseblock3.denselayer7.norm2.weight
+[313] module.features.denseblock3.denselayer7.norm2.bias
+[314] module.features.denseblock3.denselayer7.norm2.running_mean
+[315] module.features.denseblock3.denselayer7.norm2.running_var
+[316] module.features.denseblock3.denselayer7.norm2.num_batches_tracked
+[317] module.features.denseblock3.denselayer7.conv2.weight
+[318] module.features.denseblock3.denselayer8.norm1.weight
+[319] module.features.denseblock3.denselayer8.norm1.bias
+[320] module.features.denseblock3.denselayer8.norm1.running_mean
+[321] module.features.denseblock3.denselayer8.norm1.running_var
+[322] module.features.denseblock3.denselayer8.norm1.num_batches_tracked
+[323] module.features.denseblock3.denselayer8.conv1.weight
+[324] module.features.denseblock3.denselayer8.norm2.weight
+[325] module.features.denseblock3.denselayer8.norm2.bias
+[326] module.features.denseblock3.denselayer8.norm2.running_mean
+[327] module.features.denseblock3.denselayer8.norm2.running_var
+[328] module.features.denseblock3.denselayer8.norm2.num_batches_tracked
+[329] module.features.denseblock3.denselayer8.conv2.weight
+[330] module.features.denseblock3.denselayer9.norm1.weight
+[331] module.features.denseblock3.denselayer9.norm1.bias
+[332] module.features.denseblock3.denselayer9.norm1.running_mean
+[333] module.features.denseblock3.denselayer9.norm1.running_var
+[334] module.features.denseblock3.denselayer9.norm1.num_batches_tracked
+[335] module.features.denseblock3.denselayer9.conv1.weight
+[336] module.features.denseblock3.denselayer9.norm2.weight
+[337] module.features.denseblock3.denselayer9.norm2.bias
+[338] module.features.denseblock3.denselayer9.norm2.running_mean
+[339] module.features.denseblock3.denselayer9.norm2.running_var
+[340] module.features.denseblock3.denselayer9.norm2.num_batches_tracked
+[341] module.features.denseblock3.denselayer9.conv2.weight
+[342] module.features.denseblock3.denselayer10.norm1.weight
+[343] module.features.denseblock3.denselayer10.norm1.bias
+[344] module.features.denseblock3.denselayer10.norm1.running_mean
+[345] module.features.denseblock3.denselayer10.norm1.running_var
+[346] module.features.denseblock3.denselayer10.norm1.num_batches_tracked
+[347] module.features.denseblock3.denselayer10.conv1.weight
+[348] module.features.denseblock3.denselayer10.norm2.weight
+[349] module.features.denseblock3.denselayer10.norm2.bias
+[350] module.features.denseblock3.denselayer10.norm2.running_mean
+[351] module.features.denseblock3.denselayer10.norm2.running_var
+[352] module.features.denseblock3.denselayer10.norm2.num_batches_tracked
+[353] module.features.denseblock3.denselayer10.conv2.weight
+[354] module.features.denseblock3.denselayer11.norm1.weight
+[355] module.features.denseblock3.denselayer11.norm1.bias
+[356] module.features.denseblock3.denselayer11.norm1.running_mean
+[357] module.features.denseblock3.denselayer11.norm1.running_var
+[358] module.features.denseblock3.denselayer11.norm1.num_batches_tracked
+[359] module.features.denseblock3.denselayer11.conv1.weight
+[360] module.features.denseblock3.denselayer11.norm2.weight
+[361] module.features.denseblock3.denselayer11.norm2.bias
+[362] module.features.denseblock3.denselayer11.norm2.running_mean
+[363] module.features.denseblock3.denselayer11.norm2.running_var
+[364] module.features.denseblock3.denselayer11.norm2.num_batches_tracked
+[365] module.features.denseblock3.denselayer11.conv2.weight
+[366] module.features.denseblock3.denselayer12.norm1.weight
+[367] module.features.denseblock3.denselayer12.norm1.bias
+[368] module.features.denseblock3.denselayer12.norm1.running_mean
+[369] module.features.denseblock3.denselayer12.norm1.running_var
+[370] module.features.denseblock3.denselayer12.norm1.num_batches_tracked
+[371] module.features.denseblock3.denselayer12.conv1.weight
+[372] module.features.denseblock3.denselayer12.norm2.weight
+[373] module.features.denseblock3.denselayer12.norm2.bias
+[374] module.features.denseblock3.denselayer12.norm2.running_mean
+[375] module.features.denseblock3.denselayer12.norm2.running_var
+[376] module.features.denseblock3.denselayer12.norm2.num_batches_tracked
+[377] module.features.denseblock3.denselayer12.conv2.weight
+[378] module.features.denseblock3.denselayer13.norm1.weight
+[379] module.features.denseblock3.denselayer13.norm1.bias
+[380] module.features.denseblock3.denselayer13.norm1.running_mean
+[381] module.features.denseblock3.denselayer13.norm1.running_var
+[382] module.features.denseblock3.denselayer13.norm1.num_batches_tracked
+[383] module.features.denseblock3.denselayer13.conv1.weight
+[384] module.features.denseblock3.denselayer13.norm2.weight
+[385] module.features.denseblock3.denselayer13.norm2.bias
+[386] module.features.denseblock3.denselayer13.norm2.running_mean
+[387] module.features.denseblock3.denselayer13.norm2.running_var
+[388] module.features.denseblock3.denselayer13.norm2.num_batches_tracked
+[389] module.features.denseblock3.denselayer13.conv2.weight
+[390] module.features.denseblock3.denselayer14.norm1.weight
+[391] module.features.denseblock3.denselayer14.norm1.bias
+[392] module.features.denseblock3.denselayer14.norm1.running_mean
+[393] module.features.denseblock3.denselayer14.norm1.running_var
+[394] module.features.denseblock3.denselayer14.norm1.num_batches_tracked
+[395] module.features.denseblock3.denselayer14.conv1.weight
+[396] module.features.denseblock3.denselayer14.norm2.weight
+[397] module.features.denseblock3.denselayer14.norm2.bias
+[398] module.features.denseblock3.denselayer14.norm2.running_mean
+[399] module.features.denseblock3.denselayer14.norm2.running_var
+[400] module.features.denseblock3.denselayer14.norm2.num_batches_tracked
+[401] module.features.denseblock3.denselayer14.conv2.weight
+[402] module.features.denseblock3.denselayer15.norm1.weight
+[403] module.features.denseblock3.denselayer15.norm1.bias
+[404] module.features.denseblock3.denselayer15.norm1.running_mean
+[405] module.features.denseblock3.denselayer15.norm1.running_var
+[406] module.features.denseblock3.denselayer15.norm1.num_batches_tracked
+[407] module.features.denseblock3.denselayer15.conv1.weight
+[408] module.features.denseblock3.denselayer15.norm2.weight
+[409] module.features.denseblock3.denselayer15.norm2.bias
+[410] module.features.denseblock3.denselayer15.norm2.running_mean
+[411] module.features.denseblock3.denselayer15.norm2.running_var
+[412] module.features.denseblock3.denselayer15.norm2.num_batches_tracked
+[413] module.features.denseblock3.denselayer15.conv2.weight
+[414] module.features.denseblock3.denselayer16.norm1.weight
+[415] module.features.denseblock3.denselayer16.norm1.bias
+[416] module.features.denseblock3.denselayer16.norm1.running_mean
+[417] module.features.denseblock3.denselayer16.norm1.running_var
+[418] module.features.denseblock3.denselayer16.norm1.num_batches_tracked
+[419] module.features.denseblock3.denselayer16.conv1.weight
+[420] module.features.denseblock3.denselayer16.norm2.weight
+[421] module.features.denseblock3.denselayer16.norm2.bias
+[422] module.features.denseblock3.denselayer16.norm2.running_mean
+[423] module.features.denseblock3.denselayer16.norm2.running_var
+[424] module.features.denseblock3.denselayer16.norm2.num_batches_tracked
+[425] module.features.denseblock3.denselayer16.conv2.weight
+[426] module.features.denseblock3.denselayer17.norm1.weight
+[427] module.features.denseblock3.denselayer17.norm1.bias
+[428] module.features.denseblock3.denselayer17.norm1.running_mean
+[429] module.features.denseblock3.denselayer17.norm1.running_var
+[430] module.features.denseblock3.denselayer17.norm1.num_batches_tracked
+[431] module.features.denseblock3.denselayer17.conv1.weight
+[432] module.features.denseblock3.denselayer17.norm2.weight
+[433] module.features.denseblock3.denselayer17.norm2.bias
+[434] module.features.denseblock3.denselayer17.norm2.running_mean
+[435] module.features.denseblock3.denselayer17.norm2.running_var
+[436] module.features.denseblock3.denselayer17.norm2.num_batches_tracked
+[437] module.features.denseblock3.denselayer17.conv2.weight
+[438] module.features.denseblock3.denselayer18.norm1.weight
+[439] module.features.denseblock3.denselayer18.norm1.bias
+[440] module.features.denseblock3.denselayer18.norm1.running_mean
+[441] module.features.denseblock3.denselayer18.norm1.running_var
+[442] module.features.denseblock3.denselayer18.norm1.num_batches_tracked
+[443] module.features.denseblock3.denselayer18.conv1.weight
+[444] module.features.denseblock3.denselayer18.norm2.weight
+[445] module.features.denseblock3.denselayer18.norm2.bias
+[446] module.features.denseblock3.denselayer18.norm2.running_mean
+[447] module.features.denseblock3.denselayer18.norm2.running_var
+[448] module.features.denseblock3.denselayer18.norm2.num_batches_tracked
+[449] module.features.denseblock3.denselayer18.conv2.weight
+[450] module.features.denseblock3.denselayer19.norm1.weight
+[451] module.features.denseblock3.denselayer19.norm1.bias
+[452] module.features.denseblock3.denselayer19.norm1.running_mean
+[453] module.features.denseblock3.denselayer19.norm1.running_var
+[454] module.features.denseblock3.denselayer19.norm1.num_batches_tracked
+[455] module.features.denseblock3.denselayer19.conv1.weight
+[456] module.features.denseblock3.denselayer19.norm2.weight
+[457] module.features.denseblock3.denselayer19.norm2.bias
+[458] module.features.denseblock3.denselayer19.norm2.running_mean
+[459] module.features.denseblock3.denselayer19.norm2.running_var
+[460] module.features.denseblock3.denselayer19.norm2.num_batches_tracked
+[461] module.features.denseblock3.denselayer19.conv2.weight
+[462] module.features.denseblock3.denselayer20.norm1.weight
+[463] module.features.denseblock3.denselayer20.norm1.bias
+[464] module.features.denseblock3.denselayer20.norm1.running_mean
+[465] module.features.denseblock3.denselayer20.norm1.running_var
+[466] module.features.denseblock3.denselayer20.norm1.num_batches_tracked
+[467] module.features.denseblock3.denselayer20.conv1.weight
+[468] module.features.denseblock3.denselayer20.norm2.weight
+[469] module.features.denseblock3.denselayer20.norm2.bias
+[470] module.features.denseblock3.denselayer20.norm2.running_mean
+[471] module.features.denseblock3.denselayer20.norm2.running_var
+[472] module.features.denseblock3.denselayer20.norm2.num_batches_tracked
+[473] module.features.denseblock3.denselayer20.conv2.weight
+[474] module.features.denseblock3.denselayer21.norm1.weight
+[475] module.features.denseblock3.denselayer21.norm1.bias
+[476] module.features.denseblock3.denselayer21.norm1.running_mean
+[477] module.features.denseblock3.denselayer21.norm1.running_var
+[478] module.features.denseblock3.denselayer21.norm1.num_batches_tracked
+[479] module.features.denseblock3.denselayer21.conv1.weight
+[480] module.features.denseblock3.denselayer21.norm2.weight
+[481] module.features.denseblock3.denselayer21.norm2.bias
+[482] module.features.denseblock3.denselayer21.norm2.running_mean
+[483] module.features.denseblock3.denselayer21.norm2.running_var
+[484] module.features.denseblock3.denselayer21.norm2.num_batches_tracked
+[485] module.features.denseblock3.denselayer21.conv2.weight
+[486] module.features.denseblock3.denselayer22.norm1.weight
+[487] module.features.denseblock3.denselayer22.norm1.bias
+[488] module.features.denseblock3.denselayer22.norm1.running_mean
+[489] module.features.denseblock3.denselayer22.norm1.running_var
+[490] module.features.denseblock3.denselayer22.norm1.num_batches_tracked
+[491] module.features.denseblock3.denselayer22.conv1.weight
+[492] module.features.denseblock3.denselayer22.norm2.weight
+[493] module.features.denseblock3.denselayer22.norm2.bias
+[494] module.features.denseblock3.denselayer22.norm2.running_mean
+[495] module.features.denseblock3.denselayer22.norm2.running_var
+[496] module.features.denseblock3.denselayer22.norm2.num_batches_tracked
+[497] module.features.denseblock3.denselayer22.conv2.weight
+[498] module.features.denseblock3.denselayer23.norm1.weight
+[499] module.features.denseblock3.denselayer23.norm1.bias
+[500] module.features.denseblock3.denselayer23.norm1.running_mean
+[501] module.features.denseblock3.denselayer23.norm1.running_var
+[502] module.features.denseblock3.denselayer23.norm1.num_batches_tracked
+[503] module.features.denseblock3.denselayer23.conv1.weight
+[504] module.features.denseblock3.denselayer23.norm2.weight
+[505] module.features.denseblock3.denselayer23.norm2.bias
+[506] module.features.denseblock3.denselayer23.norm2.running_mean
+[507] module.features.denseblock3.denselayer23.norm2.running_var
+[508] module.features.denseblock3.denselayer23.norm2.num_batches_tracked
+[509] module.features.denseblock3.denselayer23.conv2.weight
+[510] module.features.denseblock3.denselayer24.norm1.weight
+[511] module.features.denseblock3.denselayer24.norm1.bias
+[512] module.features.denseblock3.denselayer24.norm1.running_mean
+[513] module.features.denseblock3.denselayer24.norm1.running_var
+[514] module.features.denseblock3.denselayer24.norm1.num_batches_tracked
+[515] module.features.denseblock3.denselayer24.conv1.weight
+[516] module.features.denseblock3.denselayer24.norm2.weight
+[517] module.features.denseblock3.denselayer24.norm2.bias
+[518] module.features.denseblock3.denselayer24.norm2.running_mean
+[519] module.features.denseblock3.denselayer24.norm2.running_var
+[520] module.features.denseblock3.denselayer24.norm2.num_batches_tracked
+[521] module.features.denseblock3.denselayer24.conv2.weight
+[522] module.features.transition3.norm.weight
+[523] module.features.transition3.norm.bias
+[524] module.features.transition3.norm.running_mean
+[525] module.features.transition3.norm.running_var
+[526] module.features.transition3.norm.num_batches_tracked
+[527] module.features.transition3.conv.weight
+[528] module.features.denseblock4.denselayer1.norm1.weight
+[529] module.features.denseblock4.denselayer1.norm1.bias
+[530] module.features.denseblock4.denselayer1.norm1.running_mean
+[531] module.features.denseblock4.denselayer1.norm1.running_var
+[532] module.features.denseblock4.denselayer1.norm1.num_batches_tracked
+[533] module.features.denseblock4.denselayer1.conv1.weight
+[534] module.features.denseblock4.denselayer1.norm2.weight
+[535] module.features.denseblock4.denselayer1.norm2.bias
+[536] module.features.denseblock4.denselayer1.norm2.running_mean
+[537] module.features.denseblock4.denselayer1.norm2.running_var
+[538] module.features.denseblock4.denselayer1.norm2.num_batches_tracked
+[539] module.features.denseblock4.denselayer1.conv2.weight
+[540] module.features.denseblock4.denselayer2.norm1.weight
+[541] module.features.denseblock4.denselayer2.norm1.bias
+[542] module.features.denseblock4.denselayer2.norm1.running_mean
+[543] module.features.denseblock4.denselayer2.norm1.running_var
+[544] module.features.denseblock4.denselayer2.norm1.num_batches_tracked
+[545] module.features.denseblock4.denselayer2.conv1.weight
+[546] module.features.denseblock4.denselayer2.norm2.weight
+[547] module.features.denseblock4.denselayer2.norm2.bias
+[548] module.features.denseblock4.denselayer2.norm2.running_mean
+[549] module.features.denseblock4.denselayer2.norm2.running_var
+[550] module.features.denseblock4.denselayer2.norm2.num_batches_tracked
+[551] module.features.denseblock4.denselayer2.conv2.weight
+[552] module.features.denseblock4.denselayer3.norm1.weight
+[553] module.features.denseblock4.denselayer3.norm1.bias
+[554] module.features.denseblock4.denselayer3.norm1.running_mean
+[555] module.features.denseblock4.denselayer3.norm1.running_var
+[556] module.features.denseblock4.denselayer3.norm1.num_batches_tracked
+[557] module.features.denseblock4.denselayer3.conv1.weight
+[558] module.features.denseblock4.denselayer3.norm2.weight
+[559] module.features.denseblock4.denselayer3.norm2.bias
+[560] module.features.denseblock4.denselayer3.norm2.running_mean
+[561] module.features.denseblock4.denselayer3.norm2.running_var
+[562] module.features.denseblock4.denselayer3.norm2.num_batches_tracked
+[563] module.features.denseblock4.denselayer3.conv2.weight
+[564] module.features.denseblock4.denselayer4.norm1.weight
+[565] module.features.denseblock4.denselayer4.norm1.bias
+[566] module.features.denseblock4.denselayer4.norm1.running_mean
+[567] module.features.denseblock4.denselayer4.norm1.running_var
+[568] module.features.denseblock4.denselayer4.norm1.num_batches_tracked
+[569] module.features.denseblock4.denselayer4.conv1.weight
+[570] module.features.denseblock4.denselayer4.norm2.weight
+[571] module.features.denseblock4.denselayer4.norm2.bias
+[572] module.features.denseblock4.denselayer4.norm2.running_mean
+[573] module.features.denseblock4.denselayer4.norm2.running_var
+[574] module.features.denseblock4.denselayer4.norm2.num_batches_tracked
+[575] module.features.denseblock4.denselayer4.conv2.weight
+[576] module.features.denseblock4.denselayer5.norm1.weight
+[577] module.features.denseblock4.denselayer5.norm1.bias
+[578] module.features.denseblock4.denselayer5.norm1.running_mean
+[579] module.features.denseblock4.denselayer5.norm1.running_var
+[580] module.features.denseblock4.denselayer5.norm1.num_batches_tracked
+[581] module.features.denseblock4.denselayer5.conv1.weight
+[582] module.features.denseblock4.denselayer5.norm2.weight
+[583] module.features.denseblock4.denselayer5.norm2.bias
+[584] module.features.denseblock4.denselayer5.norm2.running_mean
+[585] module.features.denseblock4.denselayer5.norm2.running_var
+[586] module.features.denseblock4.denselayer5.norm2.num_batches_tracked
+[587] module.features.denseblock4.denselayer5.conv2.weight
+[588] module.features.denseblock4.denselayer6.norm1.weight
+[589] module.features.denseblock4.denselayer6.norm1.bias
+[590] module.features.denseblock4.denselayer6.norm1.running_mean
+[591] module.features.denseblock4.denselayer6.norm1.running_var
+[592] module.features.denseblock4.denselayer6.norm1.num_batches_tracked
+[593] module.features.denseblock4.denselayer6.conv1.weight
+[594] module.features.denseblock4.denselayer6.norm2.weight
+[595] module.features.denseblock4.denselayer6.norm2.bias
+[596] module.features.denseblock4.denselayer6.norm2.running_mean
+[597] module.features.denseblock4.denselayer6.norm2.running_var
+[598] module.features.denseblock4.denselayer6.norm2.num_batches_tracked
+[599] module.features.denseblock4.denselayer6.conv2.weight
+[600] module.features.denseblock4.denselayer7.norm1.weight
+[601] module.features.denseblock4.denselayer7.norm1.bias
+[602] module.features.denseblock4.denselayer7.norm1.running_mean
+[603] module.features.denseblock4.denselayer7.norm1.running_var
+[604] module.features.denseblock4.denselayer7.norm1.num_batches_tracked
+[605] module.features.denseblock4.denselayer7.conv1.weight
+[606] module.features.denseblock4.denselayer7.norm2.weight
+[607] module.features.denseblock4.denselayer7.norm2.bias
+[608] module.features.denseblock4.denselayer7.norm2.running_mean
+[609] module.features.denseblock4.denselayer7.norm2.running_var
+[610] module.features.denseblock4.denselayer7.norm2.num_batches_tracked
+[611] module.features.denseblock4.denselayer7.conv2.weight
+[612] module.features.denseblock4.denselayer8.norm1.weight
+[613] module.features.denseblock4.denselayer8.norm1.bias
+[614] module.features.denseblock4.denselayer8.norm1.running_mean
+[615] module.features.denseblock4.denselayer8.norm1.running_var
+[616] module.features.denseblock4.denselayer8.norm1.num_batches_tracked
+[617] module.features.denseblock4.denselayer8.conv1.weight
+[618] module.features.denseblock4.denselayer8.norm2.weight
+[619] module.features.denseblock4.denselayer8.norm2.bias
+[620] module.features.denseblock4.denselayer8.norm2.running_mean
+[621] module.features.denseblock4.denselayer8.norm2.running_var
+[622] module.features.denseblock4.denselayer8.norm2.num_batches_tracked
+[623] module.features.denseblock4.denselayer8.conv2.weight
+[624] module.features.denseblock4.denselayer9.norm1.weight
+[625] module.features.denseblock4.denselayer9.norm1.bias
+[626] module.features.denseblock4.denselayer9.norm1.running_mean
+[627] module.features.denseblock4.denselayer9.norm1.running_var
+[628] module.features.denseblock4.denselayer9.norm1.num_batches_tracked
+[629] module.features.denseblock4.denselayer9.conv1.weight
+[630] module.features.denseblock4.denselayer9.norm2.weight
+[631] module.features.denseblock4.denselayer9.norm2.bias
+[632] module.features.denseblock4.denselayer9.norm2.running_mean
+[633] module.features.denseblock4.denselayer9.norm2.running_var
+[634] module.features.denseblock4.denselayer9.norm2.num_batches_tracked
+[635] module.features.denseblock4.denselayer9.conv2.weight
+[636] module.features.denseblock4.denselayer10.norm1.weight
+[637] module.features.denseblock4.denselayer10.norm1.bias
+[638] module.features.denseblock4.denselayer10.norm1.running_mean
+[639] module.features.denseblock4.denselayer10.norm1.running_var
+[640] module.features.denseblock4.denselayer10.norm1.num_batches_tracked
+[641] module.features.denseblock4.denselayer10.conv1.weight
+[642] module.features.denseblock4.denselayer10.norm2.weight
+[643] module.features.denseblock4.denselayer10.norm2.bias
+[644] module.features.denseblock4.denselayer10.norm2.running_mean
+[645] module.features.denseblock4.denselayer10.norm2.running_var
+[646] module.features.denseblock4.denselayer10.norm2.num_batches_tracked
+[647] module.features.denseblock4.denselayer10.conv2.weight
+[648] module.features.denseblock4.denselayer11.norm1.weight
+[649] module.features.denseblock4.denselayer11.norm1.bias
+[650] module.features.denseblock4.denselayer11.norm1.running_mean
+[651] module.features.denseblock4.denselayer11.norm1.running_var
+[652] module.features.denseblock4.denselayer11.norm1.num_batches_tracked
+[653] module.features.denseblock4.denselayer11.conv1.weight
+[654] module.features.denseblock4.denselayer11.norm2.weight
+[655] module.features.denseblock4.denselayer11.norm2.bias
+[656] module.features.denseblock4.denselayer11.norm2.running_mean
+[657] module.features.denseblock4.denselayer11.norm2.running_var
+[658] module.features.denseblock4.denselayer11.norm2.num_batches_tracked
+[659] module.features.denseblock4.denselayer11.conv2.weight
+[660] module.features.denseblock4.denselayer12.norm1.weight
+[661] module.features.denseblock4.denselayer12.norm1.bias
+[662] module.features.denseblock4.denselayer12.norm1.running_mean
+[663] module.features.denseblock4.denselayer12.norm1.running_var
+[664] module.features.denseblock4.denselayer12.norm1.num_batches_tracked
+[665] module.features.denseblock4.denselayer12.conv1.weight
+[666] module.features.denseblock4.denselayer12.norm2.weight
+[667] module.features.denseblock4.denselayer12.norm2.bias
+[668] module.features.denseblock4.denselayer12.norm2.running_mean
+[669] module.features.denseblock4.denselayer12.norm2.running_var
+[670] module.features.denseblock4.denselayer12.norm2.num_batches_tracked
+[671] module.features.denseblock4.denselayer12.conv2.weight
+[672] module.features.denseblock4.denselayer13.norm1.weight
+[673] module.features.denseblock4.denselayer13.norm1.bias
+[674] module.features.denseblock4.denselayer13.norm1.running_mean
+[675] module.features.denseblock4.denselayer13.norm1.running_var
+[676] module.features.denseblock4.denselayer13.norm1.num_batches_tracked
+[677] module.features.denseblock4.denselayer13.conv1.weight
+[678] module.features.denseblock4.denselayer13.norm2.weight
+[679] module.features.denseblock4.denselayer13.norm2.bias
+[680] module.features.denseblock4.denselayer13.norm2.running_mean
+[681] module.features.denseblock4.denselayer13.norm2.running_var
+[682] module.features.denseblock4.denselayer13.norm2.num_batches_tracked
+[683] module.features.denseblock4.denselayer13.conv2.weight
+[684] module.features.denseblock4.denselayer14.norm1.weight
+[685] module.features.denseblock4.denselayer14.norm1.bias
+[686] module.features.denseblock4.denselayer14.norm1.running_mean
+[687] module.features.denseblock4.denselayer14.norm1.running_var
+[688] module.features.denseblock4.denselayer14.norm1.num_batches_tracked
+[689] module.features.denseblock4.denselayer14.conv1.weight
+[690] module.features.denseblock4.denselayer14.norm2.weight
+[691] module.features.denseblock4.denselayer14.norm2.bias
+[692] module.features.denseblock4.denselayer14.norm2.running_mean
+[693] module.features.denseblock4.denselayer14.norm2.running_var
+[694] module.features.denseblock4.denselayer14.norm2.num_batches_tracked
+[695] module.features.denseblock4.denselayer14.conv2.weight
+[696] module.features.denseblock4.denselayer15.norm1.weight
+[697] module.features.denseblock4.denselayer15.norm1.bias
+[698] module.features.denseblock4.denselayer15.norm1.running_mean
+[699] module.features.denseblock4.denselayer15.norm1.running_var
+[700] module.features.denseblock4.denselayer15.norm1.num_batches_tracked
+[701] module.features.denseblock4.denselayer15.conv1.weight
+[702] module.features.denseblock4.denselayer15.norm2.weight
+[703] module.features.denseblock4.denselayer15.norm2.bias
+[704] module.features.denseblock4.denselayer15.norm2.running_mean
+[705] module.features.denseblock4.denselayer15.norm2.running_var
+[706] module.features.denseblock4.denselayer15.norm2.num_batches_tracked
+[707] module.features.denseblock4.denselayer15.conv2.weight
+[708] module.features.denseblock4.denselayer16.norm1.weight
+[709] module.features.denseblock4.denselayer16.norm1.bias
+[710] module.features.denseblock4.denselayer16.norm1.running_mean
+[711] module.features.denseblock4.denselayer16.norm1.running_var
+[712] module.features.denseblock4.denselayer16.norm1.num_batches_tracked
+[713] module.features.denseblock4.denselayer16.conv1.weight
+[714] module.features.denseblock4.denselayer16.norm2.weight
+[715] module.features.denseblock4.denselayer16.norm2.bias
+[716] module.features.denseblock4.denselayer16.norm2.running_mean
+[717] module.features.denseblock4.denselayer16.norm2.running_var
+[718] module.features.denseblock4.denselayer16.norm2.num_batches_tracked
+[719] module.features.denseblock4.denselayer16.conv2.weight
+[720] module.features.norm5.weight
+[721] module.features.norm5.bias
+[722] module.features.norm5.running_mean
+[723] module.features.norm5.running_var
+[724] module.features.norm5.num_batches_tracked
+[725] module.classifier.weight
+[726] module.classifier.bias
+str(model['features.denseblock2.denselayer4.conv1.weight']) = "tensor([[[[-0.0104]],\n\n         [[ 0.0272]],\n\n         [[-0.0253]],\n\n         ...,\n\n         [[-0.0321]],\n\n         [[ 0.0094]],\n\n         [[-0.0075]]],\n\n\n        [[[ 0.0358]],\n\n         [[ 0.0018]],\n\n         [[-0.0006]],\n\n         ...,\n\n         [[-0.0350]],\n\n         [[-0.0257]],\n\n         [[-0.0038]]],\n\n\n        [[[ 0.0049]],\n\n         [[-0.0130]],\n\n         [[-0.0047]],\n\n         ...,\n\n         [[ 0.0232]],\n\n         [[-0.0254]],\n\n         [[ 0.0081]]],\n\n\n        ...,\n\n\n        [[[-0.0371]],\n\n         [[-0.0217]],\n\n         [[ 0.0062]],\n\n         ...,\n\n         [[ 0.0072]],\n\n         [[-0.0054]],\n\n         [[ 0.0083]]],\n\n\n        [[[-0.0187]],\n\n         [[-0.0219]],\n\n         [[ 0.0119]],\n\n         ...,\n\n         [[-0.0104]],\n\n         [[-0.0314]],\n\n         [[ 0.0133]]],\n\n\n        [[[ 0.0340]],\n\n         [[-0.0069]],\n\n         [[-0.0051]],\n\n         ...,\n\n         [[-0.0139]],\n\n         [[-0.0337]],\n\n         [[-0.0001]]]], device='cuda:0')"

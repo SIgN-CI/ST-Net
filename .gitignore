@@ -1,4 +1,4 @@
-*.tsv
+# *.tsv
 *.pkl
 .tox
 **.egg-info**
@@ -12,6 +12,18 @@ heterogeneity/outputs/*
 *.fls
 *.log
 *.pyc
+
+# My additions
+data/hist2tscript-patch
+output/
+output_inference/
+custom_fig/
+log/
+models/
+*.gz
+metadata.csv
+*.jpg
+*.tif
 
 stnet.cfg
 .stnet.cfg

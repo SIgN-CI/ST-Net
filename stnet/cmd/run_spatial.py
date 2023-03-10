@@ -156,6 +156,7 @@ def run_spatial(args=None):
 
             if args.load is not None:
                 model.load_state_dict(torch.load(args.load)["model"])
+                logger.info(f"Loaded model from {args.load}")
 
             ### Reload parameters from incomplete run ###
             if args.restart:
@@ -240,10 +241,13 @@ def run_spatial(args=None):
 
                 logger.info("Computing mean expression took {}".format(time.time() - t))
 
+        logger.info(f"Model = {type(model)}")
+        torch.save(model.module.state_dict(), f"{args.pred_root[:args.pred_root.index('_model/') + 6]}/loaded_model.pt")
         ### Training Loop ###
         for epoch in range(start_epoch, args.epochs):
             logger.info("Epoch #" + str(epoch + 1))
-            for (dataset, loader) in [("train", train_loader), ("test", test_loader)]:
+            # for (dataset, loader) in [("train", train_loader), ("test", test_loader)]:
+            for (dataset, loader) in [("test", test_loader)]:
 
                 t = time.time()
                 torch.set_grad_enabled(dataset == "train")
@@ -384,7 +388,13 @@ def run_spatial(args=None):
                         me_tumor = mean_expression_tumor.cpu().numpy(),
                         me_normal = mean_expression_normal.cpu().numpy(),
 
+                    # Create custom directory with name of loaded model
+                    # model_testpatient = args.load.split('/')[-1].split('_')[0]
+                    # custom_pred_root = args.pred_root.split('/')
+                    # custom_pred_root.insert(3, f"{model_testpatient}_model")
+                    # custom_pred_root = '/'.join(custom_pred_root)
                     pathlib.Path(os.path.dirname(args.pred_root)).mkdir(parents=True, exist_ok=True)
+                    # pathlib.Path(os.path.dirname(custom_pred_root)).mkdir(parents=True, exist_ok=True)
                     np.savez_compressed(args.pred_root + str(epoch + 1),
                                         task=args.task,
                                         tumor=tumor,
