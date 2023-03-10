@@ -20,10 +20,12 @@ output_inference/
 custom_fig/
 log/
 models/
+fig/
 *.gz
 metadata.csv
 *.jpg
 *.tif
+*_figures.zip
 
 stnet.cfg
 .stnet.cfg
