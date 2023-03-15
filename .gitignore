@@ -19,7 +19,7 @@ output/
 output_inference/
 custom_fig/
 log/
-models/
+# models/
 fig/
 *.gz
 metadata.csv
