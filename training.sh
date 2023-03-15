@@ -26,4 +26,12 @@ echo "Epochs: ${epochs}"
 echo "Window: ${window}px"
 echo "GPU   : ${GPU}"
 
-CUDA_VISIBLE_DEVICES=${GPU} bin/cross_validate.py output/${model}_${window}/top_${ngenes}/${training_label}_ ${training_label} ${epochs} --lr 1e-6 --window ${window} --model ${model} --pretrain --average --batch 32 --workers 7 --gene_n ${ngenes} --norm --epochs ${epochs} 
+echo "Continue [y/n]?"
+read user_confirmation
+
+if [[ $user_confirmation == "y" || $user_confirmation == "Y" ]]
+then
+    CUDA_VISIBLE_DEVICES=${GPU} bin/cross_validate.py output/${model}_${window}/top_${ngenes}/${training_label}_ ${training_label} ${epochs} --lr 1e-6 --window ${window} --model ${model} --pretrain --average --batch 32 --workers 7 --gene_n ${ngenes} --norm --epochs ${epochs} 
+else
+    echo "Confirmation not received. Aborting..."
+fi
