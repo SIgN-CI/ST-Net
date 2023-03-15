@@ -159,5 +159,6 @@ else:
                ["--pred_root", args.root] +
                ["--trainpatients"] + patients +
                ["--testpatients"] + [""] +
+               ["--keep_checkpoints", str(args.epochs)] + 
                unknown
     )
