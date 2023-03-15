@@ -40,36 +40,40 @@ def run_spatial(args=None):
 
         train_patients = []
         test_patients = []
-        n_test = round(args.test * len(patient))
-        is_test = [True for i in range(n_test)] + [False for i in range(len(patient) - n_test)]
-        random.shuffle(is_test)
+        # n_test = round(args.test * len(patient))
+        # is_test = [True for i in range(n_test)] + [False for i in range(len(patient) - n_test)]
+        # random.shuffle(is_test)
+
+        # for (i, p) in enumerate(patient):
+        #     if args.trainpatients is None and args.testpatients is None:
+        #         if is_test[i]:
+        #             for s in patient[p]:
+        #                 test_patients.append((p, s))
+        #         else:
+        #             for s in patient[p]:
+        #                 train_patients.append((p, s))
+        #     elif args.trainpatients is None and args.testpatients is not None:
+        #         for s in patient[p]:
+        #             if p in args.testpatients or (p, s) in args.testpatients:
+        #                 test_patients.append((p, s))
+        #             else:
+        #                 train_patients.append((p, s))
+        #     elif args.trainpatients is not None and args.testpatients is None:
+        #         for s in patient[p]:
+        #             if p in args.trainpatients or (p, s) in args.trainpatients:
+        #                 train_patients.append((p, s))
+        #             else:
+        #                 test_patients.append((p, s))
+        #     else:
+        #         for s in patient[p]:
+        #             if p in args.trainpatients or (p, s) in args.trainpatients:
+        #                 train_patients.append((p, s))
+        #             if p in args.testpatients or (p, s) in args.testpatients:
+        #                 test_patients.append((p, s))
 
         for (i, p) in enumerate(patient):
-            if args.trainpatients is None and args.testpatients is None:
-                if is_test[i]:
-                    for s in patient[p]:
-                        test_patients.append((p, s))
-                else:
-                    for s in patient[p]:
-                        train_patients.append((p, s))
-            elif args.trainpatients is None and args.testpatients is not None:
-                for s in patient[p]:
-                    if p in args.testpatients or (p, s) in args.testpatients:
-                        test_patients.append((p, s))
-                    else:
-                        train_patients.append((p, s))
-            elif args.trainpatients is not None and args.testpatients is None:
-                for s in patient[p]:
-                    if p in args.trainpatients or (p, s) in args.trainpatients:
-                        train_patients.append((p, s))
-                    else:
-                        test_patients.append((p, s))
-            else:
-                for s in patient[p]:
-                    if p in args.trainpatients or (p, s) in args.trainpatients:
-                        train_patients.append((p, s))
-                    if p in args.testpatients or (p, s) in args.testpatients:
-                        test_patients.append((p, s))
+            for s in patient[p]:
+                train_patients.append((p, s))
 
         ### Dataset setup ###
         window = args.window
@@ -116,9 +120,9 @@ def run_spatial(args=None):
             transform = torchvision.transforms.Compose([torchvision.transforms.ToTensor(),
                                                         torchvision.transforms.Normalize(mean=mean, std=std)])
         # TODO: random crops on test too?
-        test_dataset = stnet.datasets.Spatial(test_patients, transform, window=args.window, gene_filter=args.gene_filter, downsample=args.downsample, norm=args.norm, gene_transform=args.gene_transform, feature=(args.model == "rf"))
+        # test_dataset = stnet.datasets.Spatial(test_patients, transform, window=args.window, gene_filter=args.gene_filter, downsample=args.downsample, norm=args.norm, gene_transform=args.gene_transform, feature=(args.model == "rf"))
 
-        test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch, num_workers=args.workers, shuffle=True, pin_memory=args.gpu)
+        # test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch, num_workers=args.workers, shuffle=True, pin_memory=args.gpu)
 
         # Find number of required outputs
         if args.task == "tumor":
@@ -243,7 +247,8 @@ def run_spatial(args=None):
         ### Training Loop ###
         for epoch in range(start_epoch, args.epochs):
             logger.info("Epoch #" + str(epoch + 1))
-            for (dataset, loader) in [("train", train_loader), ("test", test_loader)]:
+            # for (dataset, loader) in [("train", train_loader), ("test", test_loader)]:
+            for (dataset, loader) in [("train", train_loader)]:
 
                 t = time.time()
                 torch.set_grad_enabled(dataset == "train")
@@ -368,38 +373,38 @@ def run_spatial(args=None):
                         import sklearn.ensemble
                         model = sklearn.ensemble.RandomForestRegressor(n_estimators=100).fit(features, genes)
 
-                if save_pred:
-                    predictions = np.concatenate(predictions)
-                    counts = np.concatenate(counts)
-                    tumor = np.concatenate(tumor)
-                    coord = np.concatenate(coord)
-                    pixel = np.concatenate(pixel)
+                # if save_pred:
+                #     predictions = np.concatenate(predictions)
+                #     counts = np.concatenate(counts)
+                #     tumor = np.concatenate(tumor)
+                #     coord = np.concatenate(coord)
+                #     pixel = np.concatenate(pixel)
 
-                    if args.task == "tumor":
-                        me = None
-                        me_tumor = None
-                        me_normal = None
-                    else:
-                        me = mean_expression.cpu().numpy(),
-                        me_tumor = mean_expression_tumor.cpu().numpy(),
-                        me_normal = mean_expression_normal.cpu().numpy(),
+                #     if args.task == "tumor":
+                #         me = None
+                #         me_tumor = None
+                #         me_normal = None
+                #     else:
+                #         me = mean_expression.cpu().numpy(),
+                #         me_tumor = mean_expression_tumor.cpu().numpy(),
+                #         me_normal = mean_expression_normal.cpu().numpy(),
 
-                    pathlib.Path(os.path.dirname(args.pred_root)).mkdir(parents=True, exist_ok=True)
-                    np.savez_compressed(args.pred_root + str(epoch + 1),
-                                        task=args.task,
-                                        tumor=tumor,
-                                        counts=counts,
-                                        predictions=predictions,
-                                        coord=coord,
-                                        patient=patient,
-                                        section=section,
-                                        pixel=pixel,
-                                        mean_expression=me,
-                                        mean_expression_tumor=me_tumor,
-                                        mean_expression_normal=me_normal,
-                                        ensg_names=test_dataset.ensg_names,
-                                        gene_names=test_dataset.gene_names,
-                    )
+                #     pathlib.Path(os.path.dirname(args.pred_root)).mkdir(parents=True, exist_ok=True)
+                #     np.savez_compressed(args.pred_root + str(epoch + 1),
+                #                         task=args.task,
+                #                         tumor=tumor,
+                #                         counts=counts,
+                #                         predictions=predictions,
+                #                         coord=coord,
+                #                         patient=patient,
+                #                         section=section,
+                #                         pixel=pixel,
+                #                         mean_expression=me,
+                #                         mean_expression_tumor=me_tumor,
+                #                         mean_expression_normal=me_normal,
+                #                         ensg_names=test_dataset.ensg_names,
+                #                         gene_names=test_dataset.gene_names,
+                #     )
 
                 # Saving after test so that if information from test is needed, they will not get skipped
                 if dataset == "test" and args.checkpoint is not None and ((epoch + 1) % args.checkpoint_every) == 0 and args.model != "rf":
