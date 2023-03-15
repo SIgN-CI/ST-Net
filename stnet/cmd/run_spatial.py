@@ -419,6 +419,13 @@ def run_spatial(args=None):
 
                     if epoch != 0 and (args.keep_checkpoints is None or (epoch + 1 - args.checkpoint_every) not in args.keep_checkpoints):
                         os.remove(args.checkpoint + str(epoch + 1 - args.checkpoint_every) + ".pt")
+        
+        # Save model
+        pathlib.Path(os.path.dirname(args.checkpoint)).mkdir(parents=True, exist_ok=True)
+        torch.save({
+                        'model': model.state_dict(),
+                        'optim' : optim.state_dict(),
+                    }, args.checkpoint + str(epoch + 1) + ".pt")
 
     except Exception as e:
         logger.exception(traceback.format_exc())

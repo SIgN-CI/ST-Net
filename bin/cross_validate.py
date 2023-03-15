@@ -6,6 +6,7 @@ import argcomplete
 parser = argparse.ArgumentParser("Cross validation for experiments.")
 
 parser.add_argument("root", type=str)
+parser.add_argument("training_label", type=str)
 # parser.add_argument("folds", type=int)
 parser.add_argument("epochs", type=int)
 # parser.add_argument("testpatients", nargs="+", type=str)
@@ -154,7 +155,7 @@ else:
     stnet.main(["run_spatial", "--gene"] +
                ["--logfile", (args.root + "gene.log")] +
                ["--epochs", str(args.epochs)] +
-               ["--checkpoint", os.path.join(args.root + "checkpoints", "epoch_")] +
+               ["--checkpoint", os.path.join(args.root + "checkpoints", f"{args.training_label}_epoch_")] +
                # ["--save_pred_every", str(best_epoch)] +
                ["--pred_root", args.root] +
                ["--trainpatients"] + patients +

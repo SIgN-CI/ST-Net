@@ -16,7 +16,8 @@ heterogeneity/outputs/*
 # My own additions
 # Folders
 log/
-data/hist2tscript-patch
+data/hist2tscript-patch/
+output/
 
 # Files
 metadata.csv
