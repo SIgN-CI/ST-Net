@@ -8,11 +8,11 @@ window=30
 # window=75
 # window=224
 
-epochs=1
+# epochs=1
 # epochs=5
 # epochs=20
 # epochs=50
-# epochs=100
+epochs=100
 
 # GPU=0
 GPU=1

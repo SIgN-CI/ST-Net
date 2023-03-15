@@ -18,6 +18,7 @@ heterogeneity/outputs/*
 log/
 data/hist2tscript-patch/
 output/
+data-*/
 
 # Files
 metadata.csv
