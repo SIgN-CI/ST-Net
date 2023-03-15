@@ -13,5 +13,12 @@ heterogeneity/outputs/*
 *.log
 *.pyc
 
+# My own additions
+# Folders
+
+# Files
+*.tsv.gz
+*.csv.gz
+
 stnet.cfg
 .stnet.cfg
