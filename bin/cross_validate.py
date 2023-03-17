@@ -7,8 +7,9 @@ parser = argparse.ArgumentParser("Cross validation for experiments.")
 
 parser.add_argument("root", type=str)
 # parser.add_argument("folds", type=int)
-parser.add_argument("epochs", type=int)
+# parser.add_argument("epochs", type=int)
 parser.add_argument("testpatients", nargs="+", type=str)
+parser.add_argument("--trained_on", nargs="+", type=str)
 
 argcomplete.autocomplete(parser)
 args, unknown = parser.parse_known_args()
@@ -63,12 +64,15 @@ logger.info(args)
 logger.info(unknown)
 
 pathlib.Path(os.path.dirname(args.root)).mkdir(parents=True, exist_ok=True)
-patients = sorted(stnet.utils.util.get_spatial_patients().keys())
+# patients = sorted(stnet.utils.util.get_spatial_patients().keys())
 # folds_to_run = args.folds
 
 # for p in args.testpatients:
 #     assert(p in patients)
 #     patients.remove(p)
+# print(f"{patients = }")
+
+# print(f"{args.trained_on = }")
 
 # fold = [patients[f::args.folds] for f in range(args.folds)]
 
@@ -147,11 +151,11 @@ patients = sorted(stnet.utils.util.get_spatial_patients().keys())
 # else:
 stnet.main(["run_spatial", "--gene"] +
             ["--logfile", (args.root + "gene.log")] +
-            ["--epochs", str(args.epochs)] +
+            ["--epochs", "1"] +
             # ["--checkpoint", os.path.join(args.root + "checkpoints", "epoch_")] +
             # ["--save_pred_every", str(best_epoch)] +
             ["--pred_root", args.root] +
-            ["--trainpatients"] + patients +
+            ["--trainpatients"] + args.trained_on +
             ["--testpatients"] + args.testpatients +
             # ["--keep_checkpoints", str(best_epoch)] +
             # ["--load", args.load] +

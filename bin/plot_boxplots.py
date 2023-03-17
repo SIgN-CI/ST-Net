@@ -24,9 +24,11 @@ from matplotlib.ticker import MultipleLocator
 
 if __name__ == "__main__":
 
+    # print(f"{args.epoch = }")
     npzs = glob(f"{args.output_dir[0]}/*_{args.epoch}.npz",recursive=True)
     # Sort npzs found by glob, so that boxplot is logical and pleasant
     npzs.sort(key=lambda x: int(os.path.basename(x).split(f"_{args.epoch}.")[0][2:]))
+    # print(f"{args.output_dir[0] = }")
     # print(f"{npzs = }")
     # print(f"{len(npzs) = }")
 
@@ -40,7 +42,9 @@ if __name__ == "__main__":
         "BC51218":"NCC012Post_NCC018Post",
         "BC51517":"NCC015Post_NCC017Post",
         "BC52337":"NCC023Post_NCC037Post",
-        "BC53934":"NCC039Post_NCC034Post"
+        "BC53934":"NCC039Post_NCC034Post",
+        "HCC12"  :"COVID_HCC1,2",
+        "HCC1234":"COVID_HCC1,2,3,4"
     }
 
     vals = {}
@@ -74,6 +78,7 @@ if __name__ == "__main__":
     title_size = 20
     label_size = 16
     fig,ax = plt.subplots(1,1,figsize=(12,8))
+    # print(f"{vals = }")
     ax.boxplot(vals.values(),
                labels=vals.keys(),
                patch_artist=True)

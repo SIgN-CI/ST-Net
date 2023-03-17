@@ -40,36 +40,45 @@ def run_spatial(args=None):
 
         train_patients = []
         test_patients = []
-        n_test = round(args.test * len(patient))
-        is_test = [True for i in range(n_test)] + [False for i in range(len(patient) - n_test)]
-        random.shuffle(is_test)
+        # n_test = round(args.test * len(patient))
+        # is_test = [True for i in range(n_test)] + [False for i in range(len(patient) - n_test)]
+        # random.shuffle(is_test)
 
         for (i, p) in enumerate(patient):
-            if args.trainpatients is None and args.testpatients is None:
-                if is_test[i]:
-                    for s in patient[p]:
-                        test_patients.append((p, s))
-                else:
-                    for s in patient[p]:
-                        train_patients.append((p, s))
-            elif args.trainpatients is None and args.testpatients is not None:
-                for s in patient[p]:
-                    if p in args.testpatients or (p, s) in args.testpatients:
-                        test_patients.append((p, s))
-                    else:
-                        train_patients.append((p, s))
-            elif args.trainpatients is not None and args.testpatients is None:
-                for s in patient[p]:
-                    if p in args.trainpatients or (p, s) in args.trainpatients:
-                        train_patients.append((p, s))
-                    else:
-                        test_patients.append((p, s))
-            else:
-                for s in patient[p]:
-                    if p in args.trainpatients or (p, s) in args.trainpatients:
-                        train_patients.append((p, s))
-                    if p in args.testpatients or (p, s) in args.testpatients:
-                        test_patients.append((p, s))
+            # if args.trainpatients is None and args.testpatients is None:
+            #     if is_test[i]:
+            #         for s in patient[p]:
+            #             test_patients.append((p, s))
+            #     else:
+            #         for s in patient[p]:
+            #             train_patients.append((p, s))
+            # if args.trainpatients is None and args.testpatients is not None:
+            #     for s in patient[p]:
+            #         if p in args.testpatients or (p, s) in args.testpatients:
+            #             test_patients.append((p, s))
+            #         else:
+            #             train_patients.append((p, s))
+            # elif args.trainpatients is not None and args.testpatients is None:
+            #     for s in patient[p]:
+            #         if p in args.trainpatients or (p, s) in args.trainpatients:
+            #             train_patients.append((p, s))
+            #         else:
+            #             test_patients.append((p, s))
+            # else:
+            for s in patient[p]:
+                if p in args.trainpatients or (p, s) in args.trainpatients:
+                    train_patients.append((p, s))
+                if p in args.testpatients or (p, s) in args.testpatients:
+                    test_patients.append((p, s))
+        
+        logger.info(f"{train_patients = }")
+        logger.info(f"{test_patients  = }")
+        logger.info(f"{args.model = }")
+
+        # for (i, p) in enumerate(patient):
+        #     for s in patient[p]:
+        #         if p in args.testpatients or (p, s) in args.testpatients:
+        #             test_patients.append((p, s))
 
         ### Dataset setup ###
         window = args.window
@@ -124,9 +133,9 @@ def run_spatial(args=None):
         if args.task == "tumor":
             outputs = 2
         elif args.task == "gene":
-            outputs = train_dataset[0][2].shape[0]
+            outputs = test_dataset[0][2].shape[0]
         elif args.task == "geneb":
-            outputs = 2 * train_dataset[0][2].shape[0]
+            outputs = 2 * test_dataset[0][2].shape[0]
         elif args.task == "count":
             outputs = 1
 
