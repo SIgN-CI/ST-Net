@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## [1] SET THIS
 ## Select the inference patient type
 # inference_on="COVID_HCC"
@@ -13,18 +15,19 @@ inference_on="Y90Post"
 # model=BC51517
 # model=BC52337
 # model=BC53934
-# model=HCC12
-model=HCC1234
+model=HCC12
+# model=HCC1234
 
 ## Set automatically
 dir="output_inference/$inference_on/${model}_model"
 
 # for patient in "BC50027"
 # for patient in "BC50040"
+for patient in "BC51517"
 # for patient in "BC30001" "BC30002" "BC30003" "BC30004"
 # for patient in "BC42740"
 # for patient in "BC42334" "BC42740" "BC43740"
-for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
+# for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
 do
 
     case $patient in

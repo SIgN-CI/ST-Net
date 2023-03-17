@@ -237,8 +237,8 @@ for (patient, section) in sorted(set(ps)):
     #     gt_title = f"{patient} {section} {args.gene} Ground Truth"
     #     pred_title = f"{patient} {section} {args.gene} Prediction"
 
-    gt_title   = f"{patient_map[patient]} {section} {args.gene} Ground Truth"
-    pred_title = f"{patient_map[patient]} {section} {args.gene} Prediction"
+    gt_title   = f"{patient_map[patient]} {args.gene} Ground Truth"
+    pred_title = f"{patient_map[patient]} {args.gene} Prediction"
 
     """Ground Truth"""
     value = c[mask]

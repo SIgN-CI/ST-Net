@@ -21,11 +21,13 @@ custom_fig/
 log/
 # models/
 fig/
+correlations/
 *.gz
 metadata.csv
 *.jpg
 *.tif
 *_figures.zip
+*.zip
 
 stnet.cfg
 .stnet.cfg
