@@ -196,6 +196,20 @@ for (patient, section) in sorted(set(ps)):
 
     y90_patients = {"BC50027":"NCC027Post"}
 
+    gene_order_dict = {
+        "ALB": 1,
+        "SERPINA1": 2,
+        "APOA1": 3,
+        "APOC1": 4,
+        "IGKC": 5,
+        "APOA2": 6,
+        "FGB": 7,
+        "FGA": 8,
+        "C1S": 9,
+        "CD74": 10,
+        "MT2A": 11
+    }
+
     if patient in hcc_patients.keys():
         gt_title = f"{hcc_patients[patient]} {args.gene} Ground Truth"
         pred_title = f"{hcc_patients[patient]} {args.gene} Prediction"
@@ -223,10 +237,10 @@ for (patient, section) in sorted(set(ps)):
     plt.axis([xmin - margin, xmax + margin, ymin - margin, ymax + margin])
     plt.gca().invert_yaxis()
     
-    plt.title(f"{gt_title}\n",fontdict={'fontsize':title_font_size})
+    plt.title(f"{gt_title}\n\n",fontdict={'fontsize':title_font_size})
     plt.tight_layout()
     # fig.savefig("{}{}_{}_{}.pdf".format(args.figroot, patient, section, args.gene))
-    fig.savefig(f"{args.figroot}{patient}_{args.gene}.{args.output_extension}")
+    fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}.{args.output_extension}")
     print(f"Saved \"{gt_title}\".")
     plt.close(fig)
 
@@ -245,14 +259,14 @@ for (patient, section) in sorted(set(ps)):
     plt.axis([xmin - margin, xmax + margin, ymin - margin, ymax + margin])
     plt.gca().invert_yaxis()
     try:
-        plt.title(f"{pred_title}\nSpearman's Correlation = {np.round(spearmanr,5)} [{np.round(pval,5)}]",fontdict={'fontsize':title_font_size})
+        plt.title(f"{pred_title}\nSpearman's Correlation = {np.round(spearmanr,5)} [{np.round(pval,5)}]\n",fontdict={'fontsize':title_font_size})
     except Exception as e:
         print(e)
-        plt.title(f"{pred_title}\nSpearman's Correlation = {np.round(spearmanr,5)} [{pval}]",fontdict={'fontsize':title_font_size})
+        plt.title(f"{pred_title}\nSpearman's Correlation = {np.round(spearmanr,5)} [{pval}]\n",fontdict={'fontsize':title_font_size})
     plt.tight_layout()
     # fig.savefig("{}{}_{}_{}_{}.pdf".format(args.figroot, patient, section, args.gene, "pred"))
     # fig.savefig("{}{}_{}_{}.pdf".format(args.figroot, patient, args.gene, "pred"))
-    fig.savefig(f"{args.figroot}{patient}_{args.gene}_pred.{args.output_extension}")
+    fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_pred.{args.output_extension}")
     print(f"Saved \"{pred_title}\".")
     plt.close(fig)
 
