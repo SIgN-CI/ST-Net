@@ -133,9 +133,9 @@ def run_spatial(args=None):
         if args.task == "tumor":
             outputs = 2
         elif args.task == "gene":
-            outputs = test_dataset[0][2].shape[0]
+            outputs = train_dataset[0][2].shape[0]
         elif args.task == "geneb":
-            outputs = 2 * test_dataset[0][2].shape[0]
+            outputs = 2 * train_dataset[0][2].shape[0]
         elif args.task == "count":
             outputs = 1
 
@@ -146,11 +146,16 @@ def run_spatial(args=None):
             model = torchvision.models.__dict__[args.model](pretrained=args.pretrained, aux_logits=False)
         else:
             model = torchvision.models.__dict__[args.model](pretrained=args.pretrained)
+            logger.info(f"{args.model = }")
+            # logger.info(f"{model = }")
 
         start_epoch = 0
         if args.model != "linear" and args.model != "rf":
             # Replace last layer
             # TODO: if loading weights, should just match outs
+            logger.info(f"{outputs = }")
+            logger.info(f"{args.task = }")
+            logger.info(f"{test_dataset[0][2].shape[0] = }")
             stnet.utils.nn.set_out_features(model, outputs)
 
             if args.gpu:
@@ -164,6 +169,7 @@ def run_spatial(args=None):
 
 
             if args.load is not None:
+                logger.info(f"{args.load = }")
                 model.load_state_dict(torch.load(args.load)["model"])
                 logger.info(f"Loaded model from {args.load}")
 
