@@ -210,17 +210,35 @@ for (patient, section) in sorted(set(ps)):
         "MT2A": 11
     }
 
-    if patient in hcc_patients.keys():
-        gt_title = f"{hcc_patients[patient]} {args.gene} Ground Truth"
-        pred_title = f"{hcc_patients[patient]} {args.gene} Prediction"
-        visualize_spot_size = 18
-    elif patient in y90_patients.keys():
-        gt_title = f"{y90_patients[patient]} {args.gene} Ground Truth"
-        pred_title = f"{y90_patients[patient]} {args.gene} Prediction"
-        visualize_spot_size = 88
-    else:
-        gt_title = f"{patient} {section} {args.gene} Ground Truth"
-        pred_title = f"{patient} {section} {args.gene} Prediction"
+    patient_map = {"BC30001":"COVID_HCC1",
+                   "BC30002":"COVID_HCC2",
+                   "BC30003":"COVID_HCC3",
+                   "BC30004":"COVID_HCC4",
+                   "BC50111":"NCC001Post_NCC011Post",
+                   "BC51218":"NCC012Post_NCC018Post",
+                   "BC51517":"NCC015Post_NCC017Post",
+                   "BC52337":"NCC023Post_NCC037Post",
+                   "BC42334":"NCC023Pre_NCC034Pre"  ,
+                   "BC50027":"NCC027Post"           ,
+                   "BC42740":"NCC027Pre_NCC040A2Pre",
+                   "BC43740":"NCC037Pre_NCC040A1Pre",
+                   "BC53934":"NCC039Post_NCC034Post",
+                   "BC50040":"NCC040Post"           }
+
+    # if patient in hcc_patients.keys():
+    #     gt_title = f"{hcc_patients[patient]} {args.gene} Ground Truth"
+    #     pred_title = f"{hcc_patients[patient]} {args.gene} Prediction"
+    #     visualize_spot_size = 18
+    # elif patient in y90_patients.keys():
+    #     gt_title = f"{y90_patients[patient]} {args.gene} Ground Truth"
+    #     pred_title = f"{y90_patients[patient]} {args.gene} Prediction"
+    #     visualize_spot_size = 88
+    # else:
+    #     gt_title = f"{patient} {section} {args.gene} Ground Truth"
+    #     pred_title = f"{patient} {section} {args.gene} Prediction"
+
+    gt_title   = f"{patient_map[patient]} {section} {args.gene} Ground Truth"
+    pred_title = f"{patient_map[patient]} {section} {args.gene} Prediction"
 
     """Ground Truth"""
     value = c[mask]
