@@ -15,10 +15,13 @@ heterogeneity/outputs/*
 
 # My own additions
 # Folders
+data/hist2tscript-patch
 
 # Files
 *.tsv.gz
 *.csv.gz
+metadata.csv
+*.tif
 
 stnet.cfg
 .stnet.cfg
