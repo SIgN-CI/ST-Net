@@ -3,8 +3,8 @@ ngenes=250
 model=densenet121
 
 # window=10
-# window=30
-window=74
+window=30
+# window=74
 # window=75
 # window=224
 
@@ -25,12 +25,12 @@ GPU=1
 #      echo ${patient}
 # done
 
-# for patient in "BC30001"
+for patient in "BC30001"
 # for patient in "BC30002"
 # for patient in "BC30003"
 # for patient in "BC30004"
 # for patient in "BC30005"
-for patient in "BC50027"
+# for patient in "BC50027"
 # for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
 do
      echo ${patient}
