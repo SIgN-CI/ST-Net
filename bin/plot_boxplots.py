@@ -14,6 +14,7 @@ argcomplete.autocomplete(parser)
 args = parser.parse_args()
 import sys
 sys.path.append(".")
+import json
 import stnet
 import pathlib
 import scipy.stats
@@ -52,6 +53,7 @@ if __name__ == "__main__":
     }
 
     vals = {}
+    all_spearmanr = {}
     for npz in npzs:
         
         data = np.load(npz,allow_pickle=True)
@@ -60,6 +62,7 @@ if __name__ == "__main__":
         predictions = data["predictions"]
         gene_names  = data["gene_names"]
         this_npz_vals = []
+        save_spearmanr = {}
 
         for gene in gene_names:
             index = np.argmax(gene_names == gene)
@@ -71,8 +74,11 @@ if __name__ == "__main__":
             # Only append 5% significant correlations
             if pval < 0.05:
                 this_npz_vals.append(spearmanr)
+                save_spearmanr[gene] = spearmanr
 
         vals[patient] = this_npz_vals
+        save_spearmanr = {k: v for k, v in sorted(save_spearmanr.items(), key=lambda item: item[1], reverse=True)}
+        all_spearmanr[patient] = save_spearmanr
 
     # print(vals)
     # print(len(vals))
@@ -106,9 +112,17 @@ if __name__ == "__main__":
 
     # plt.tight_layout()
 
+    # Add scatter
+    npatients = len(vals)
+    print(f"vals=\n{vals}")
+
+
     # figroot = args.output_dir[0].split('/')[:-3]
     # figroot = '/'.join(figroot)
     # figroot = f"{figroot}/fig/visualize/"
     pathlib.Path(os.path.dirname(args.output_dir[0])).mkdir(parents=True, exist_ok=True)
     plt.savefig(f"{args.output_dir[0]}/{args.plotname}.png",dpi=300, bbox_inches="tight")
     print(f"Saved to {args.output_dir[0]}/{args.plotname}.png")
+
+    with open(f"{args.output_dir[0]}/{args.plotname}.json", "w") as f:
+        json.dump(save_spearmanr, f, indent=4)
