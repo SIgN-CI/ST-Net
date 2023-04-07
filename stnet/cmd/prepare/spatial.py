@@ -129,7 +129,8 @@ def spatial(args):
                     # print(f"{y_coord = }")
 
                     X = image[(pixel_y + (-window // 2)):(pixel_y + (window // 2)), (pixel_x + (-window // 2)):(pixel_x + (window // 2)), :]
-                    if X.shape == (window, window, 3):
+                    # if X.shape == (window, window, 3):
+                    if True:
                         # if (int(row["X"]), int(row["Y"])) in tumor:
                         if (x_coord, y_coord) in tumor:
                             
