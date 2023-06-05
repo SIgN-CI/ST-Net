@@ -14,11 +14,11 @@ window=30
 # epochs=50
 epochs=100
 
-# GPU=0
-GPU=1
+GPU=0
+# GPU=1
 # GPU=2
 
-training_label="HCC12"
+training_label="COVIDHCC"
 
 echo "Training Label: ${training_label}"
 echo "Model : ${model}"

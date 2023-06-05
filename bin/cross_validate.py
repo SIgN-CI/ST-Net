@@ -23,6 +23,8 @@ import logging
 import numpy as np
 import scipy.stats
 import shutil
+from PIL import Image
+Image.MAX_IMAGE_PIXELS = None
 
 # TODO: logging at this level gets really mangled (inner calls to logging config overwrite this)
 # simplest option is to just not log here (very little meaningful stuff anyways)
