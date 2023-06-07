@@ -31,6 +31,10 @@ import logging
 import pathlib
 import statistics
 import collections
+from PIL import Image
+Image.MAX_IMAGE_PIXELS = None
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 # TODO: make this a visiondataset
 class Spatial(torch.utils.data.Dataset):

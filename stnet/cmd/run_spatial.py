@@ -10,6 +10,9 @@ import os
 import stnet
 import glob
 import socket
+from PIL import Image
+Image.MAX_IMAGE_SIZE = None 
+
 
 def run_spatial(args=None):
 
