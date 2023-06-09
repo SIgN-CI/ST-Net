@@ -24,9 +24,8 @@ def spatial(args):
     logger = logging.getLogger(__name__)
 
     pathlib.Path(args.dest).mkdir(parents=True, exist_ok=True)
-
+    #raw is nested information about the image and counts, while subtype maps e.g. HCC to each file
     raw, subtype = load_raw(args.root)
-
     logger.info(f"{len(raw) = }")
     logger.info(f"{args.root = }")
     logger.info(f"{args.dest = }")
@@ -40,6 +39,7 @@ def spatial(args):
     t0 = time.time()
     section_header = None
     gene_names = set()
+    # extract gene information and pickle it <see load_raw for more info on origins
     for patient in raw:
         for section in raw[patient]:
             section_header = raw[patient][section]["count"].columns.values[0]
@@ -56,8 +56,8 @@ def spatial(args):
 
     for (i, patient) in enumerate(raw):
         logger.info("Processing " + str(i + 1) + " / " + str(len(raw)) + ": " + patient)
-
         for section in raw[patient]:
+            print(f"{section = }")
 
             pathlib.Path("{}/{}/{}".format(args.dest, subtype[patient], patient)).mkdir(parents=True, exist_ok=True)
 
@@ -120,6 +120,7 @@ def spatial(args):
                     # print(f"{type(row) = }")
                     # print(f"{row.tolist()[0].split(',') = }")
                     tmp_list = row.tolist()[0].split(',')
+                    print(f"{tmp_list = }")
                     pixel_x = int(round(float(tmp_list[1])))
                     pixel_y = int(round(float(tmp_list[2])))
 
@@ -131,8 +132,8 @@ def spatial(args):
                     X = image[(pixel_y + (-window // 2)):(pixel_y + (window // 2)), (pixel_x + (-window // 2)):(pixel_x + (window // 2)), :]
                     if X.shape == (window, window, 3):
                         # if (int(row["X"]), int(row["Y"])) in tumor:
+                        # only add images if they are in tumor file, meaning that the tumor and spot files have to have the same mapping
                         if (x_coord, y_coord) in tumor:
-                            
                             vals = np.unique(count[str(x_coord) + "x" + str(y_coord)])
                             num_nan = np.sum(np.isnan(vals))
 
@@ -150,6 +151,16 @@ def spatial(args):
                                             #  np.array([int(row["x"]), int(row["y"])]),
                                             np.array([x_coord, y_coord])
                                             ))
+                                print(count[str(x_coord) + "x" + str(y_coord)],
+                                            #  tumor[(int(row["x"]), int(row["y"]))],
+                                            tumor[(x_coord, y_coord)],
+                                            #  np.array([x, y]),
+                                            np.array([pixel_x, pixel_y]),
+                                            np.array([patient]),
+                                            np.array([section]),
+                                            #  np.array([int(row["x"]), int(row["y"])]),
+                                            np.array([x_coord, y_coord])
+                                            )
 
                                 # filename = "{}/{}/{}/{}_{}_{}.npz".format(args.dest, subtype[patient], patient, section,
                                 #                                           int(row["x"]), int(row["y"]))

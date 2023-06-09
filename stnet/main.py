@@ -5,6 +5,7 @@ def main(args=None):
     """Command-line interface entry point."""
     parser = stnet.parser()
     args = parser.parse_args(args)
+    print(args)
 
     try:
         func = eval(args.func)

@@ -11,7 +11,6 @@ import stnet
 import glob
 import socket
 from PIL import Image
-Image.MAX_IMAGE_SIZE = None 
 
 
 def run_spatial(args=None):
@@ -50,8 +49,7 @@ def run_spatial(args=None):
         for (i, p) in enumerate(patient):
             # if args.trainpatients is None and args.testpatients is None:
             #     if is_test[i]:
-            #         for s in patient[p]:
-            #             test_patients.append((p, s))
+            #         for s in patient[p]: #             test_patients.append((p, s))
             #     else:
             #         for s in patient[p]:
             #             train_patients.append((p, s))
@@ -266,7 +264,7 @@ def run_spatial(args=None):
             logger.info("Epoch #" + str(epoch + 1))
             # for (dataset, loader) in [("train", train_loader), ("test", test_loader)]:
             for (dataset, loader) in [("test", test_loader)]:
-
+                print("dataset, loader: ", dataset, loader)
                 t = time.time()
                 torch.set_grad_enabled(dataset == "train")
                 if args.model != "rf":
@@ -291,6 +289,7 @@ def run_spatial(args=None):
                 pixel = []
 
                 save_pred = (dataset == "test" and args.pred_root is not None and (args.save_pred_every is None or (epoch + 1) % args.save_pred_every == 0))
+                print("save_pred: ", save_pred)
 
                 n = 0
                 logger.info(dataset + ":")
@@ -302,6 +301,7 @@ def run_spatial(args=None):
                         patient += pat
                         section += s
                         pixel.append(pix.detach().numpy())
+                        
 
                     X = X.to(device)
                     y = y.to(device)
@@ -316,9 +316,11 @@ def run_spatial(args=None):
                             genes.append(gene.cpu().detach().numpy())
                             pred = gene
                         else:
+
                             pred = torch.Tensor(model.predict(f.detach().numpy())).to(device)
                     else:
                         pred = model(X)
+
                     if dataset == "test" and args.average:
                         pred = pred.view(batch, n_sym, -1).mean(1)
                     if save_pred:
@@ -338,7 +340,7 @@ def run_spatial(args=None):
 
                         # Evaluating baseline performance
                         total_mean += (torch.sum((mean_expression - gene) ** 2) / outputs).cpu().detach().numpy()
-                        mse_mean   += torch.sum((mean_expression - gene) ** 2, 0).cpu().detach().numpy()
+                        mse_mean += torch.sum((mean_expression - gene) ** 2, 0).cpu().detach().numpy()
                         y = y.float()
                         total_type += (torch.sum((y * mean_expression_tumor + (1 - y) * mean_expression_normal - gene) ** 2) / outputs).cpu().detach().numpy()
                         mse_type += torch.sum((y * mean_expression_tumor + (1 - y) * mean_expression_normal - gene) ** 2, 0).cpu().detach().numpy()
@@ -355,7 +357,6 @@ def run_spatial(args=None):
                         raise ValueError()
                     total += loss.cpu().detach().numpy()
                     n += y.shape[0]
-
                     message = ""
                     message += "{:8d} / {:d} ({:4.0f} / {:4.0f}):".format(i + 1, len(loader), time.time() - t, (time.time() - t) * len(loader) / (i + 1))
                     message += "    Loss={:.3f}".format(total / n)
@@ -369,14 +370,6 @@ def run_spatial(args=None):
                         optim.zero_grad()
                         loss.backward()
                         optim.step()
-                logger.info("    Loss:       " + str(total / len(loader.dataset)))
-                if args.task == "tumor":
-                    logger.info("    Accuracy:   " + str(correct / len(loader.dataset)))
-                    logger.info("    Percentage: " + str(positive / len(loader.dataset)))
-                if args.task == "gene":
-                    logger.info("    MSE:        " + str(total_mean / len(loader.dataset)))
-                    logger.info("    Type:       " + str(total_type / len(loader.dataset)))
-                    logger.info("    Best:       " + str(max((mse_mean - mse) / mse_mean)))
                     logger.info("    Worst:      " + str(min((mse_mean - mse) / mse_mean)))
                 # TODO: debug messages for geneb and count are incomplete (also in the progress bar)
 
@@ -446,3 +439,11 @@ def run_spatial(args=None):
     except Exception as e:
         logger.exception(traceback.format_exc())
         raise
+import torch
+import torchvision
+import torch
+import torchvision
+import numpy as np
+import torch
+import torchvision
+import numpy as np
