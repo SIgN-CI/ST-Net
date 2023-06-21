@@ -2,9 +2,9 @@
 
 ## [1] SET THIS
 ## Select the inference patient type
-# inference_on="COVID_HCC"
+inference_on="COVID_HCC"
 # inference_on="Y90Pre"
-inference_on="Y90Post"
+# inference_on="Y90Post"
 
 ## [2] SET THIS
 ## Select the model used for inference
@@ -15,7 +15,7 @@ inference_on="Y90Post"
 # model=BC51517
 # model=BC52337
 # model=BC53934
-model=HCC12
+model=BC30004
 # model=HCC1234
 
 ## Set automatically
@@ -23,8 +23,7 @@ dir="output_inference/$inference_on/${model}_model"
 
 # for patient in "BC50027"
 # for patient in "BC50040"
-for patient in "BC51517"
-# for patient in "BC30001" "BC30002" "BC30003" "BC30004"
+for patient in "BC30004"
 # for patient in "BC42740"
 # for patient in "BC42334" "BC42740" "BC43740"
 # for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
@@ -53,8 +52,10 @@ do
                ;;
     esac
 
-    for gene in "C1S" "CD74" "MT2A" "ALB" "SERPINA1" "APOA1" "APOC1" "IGKC" "APOA2" "FGB" "FGA"
     # for gene in "ALB" "C1S" "CD74" "MT2A"
+#     for gene in "C1S" "CD74" "MT2A" "ALB" "SERPINA1" "APOA1" "APOC1" "IGKC" "APOA2" "FGB" "FGA"
+    # for gene in "C1S"
+    for gene in "ALB" "C1S" "CD74" "MT2A"
     # for gene in "ALB"
     do
         bin/visualize.py $dir/${patient}_1.npz --gene ${gene} --figure_spot_size $figure_spot_size --title_font_size $title_font_size --output_extension png --figroot $dir/${patient}_visualize/
