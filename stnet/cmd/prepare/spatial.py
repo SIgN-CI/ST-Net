@@ -104,7 +104,7 @@ def spatial(args):
                 if not_int:
                     logger.warning("Patient " + patient + " " + section + " has non-integer patch coordinates.")
                 logger.info("Extracting tumors: " + str(time.time() - t0))
-
+                print(raw[patient][section]["image"])
                 t0 = time.time()
                 image = skimage.io.imread(raw[patient][section]["image"])
                 logger.info("Loading image: " + str(time.time() - t0))
@@ -291,6 +291,7 @@ def load_raw(root: str):
         temp.append(this_string)
 
     images = temp
+    print(images)
 
     # Dict mapping patient ID (str) to a list of all sections available for the patient (List[str])
     patient = collections.defaultdict(list)
@@ -305,6 +306,7 @@ def load_raw(root: str):
     for p in map(lambda x: x.split("/")[-1][:-4].split("_")[1], images):
         # print(f"{p = }")
         p2 = "BC" + p[2:]
+        print( p2, df["patient"])
         st = df.loc[df["patient"] == p2, "type"].values[0]
         # print(f"{type(st) = }")
         # print(f"st = {st}")
