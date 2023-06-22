@@ -16,8 +16,8 @@ epochs=100
 folds=3
 # folds=4
 
-# GPU=0
-GPU=1
+GPU=0
+# GPU=1
 # GPU=2
 
 using_to_train="COVIDHCC"
@@ -27,7 +27,7 @@ using_to_train="COVIDHCC"
 # for patient in "BC30001"
 # for patient in "BC30002"
 # for patient in "BC30003"
-for patient in "BC30004"
+for patient in "BC30007"
 # for patient in "BC30005"
 # for patient in "BC50027"
 # for patient in "BC50111"

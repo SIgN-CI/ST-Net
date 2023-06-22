@@ -27,6 +27,8 @@ import os
 import pathlib
 import scipy.stats
 from sklearn.decomposition import PCA
+from PIL import Image
+Image.MAX_IMAGE_PIXELS=None
 
 stnet.utils.util.latexify()
 cmap = plt.get_cmap("viridis")
@@ -140,8 +142,8 @@ for (patient, section) in sorted(set(ps)):
     xsize = xmax - xmin + 2 * margin
     ysize = ymax - ymin + 2 * margin
     # ~
-    # figsize = (0.00017 * xsize, 0.00017 * ysize)
-    figsize = (0.0017 * xsize, 0.0017 * ysize)
+    figsize = (0.00017 * xsize, 0.00017 * ysize)
+    # figsize = (0.0017 * xsize, 0.0017 * ysize)
 
     # fig = plt.figure(figsize=figsize)
     # plt.imshow(image, aspect="equal", interpolation="nearest")
@@ -215,6 +217,9 @@ for (patient, section) in sorted(set(ps)):
                    "BC30002":"COVID_HCC2",
                    "BC30003":"COVID_HCC3",
                    "BC30004":"COVID_HCC4",
+                   "BC30005":"COVID_HCC5",
+                   "BC30006":"COVID_HCC6",
+                   "BC30007":"COVID_HCC7",
                    "BC50111":"NCC001Post_NCC011Post",
                    "BC51218":"NCC012Post_NCC018Post",
                    "BC51517":"NCC015Post_NCC017Post",

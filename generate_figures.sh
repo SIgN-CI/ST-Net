@@ -25,7 +25,7 @@ inference_on="COVIDHCC"
 # for patient in "BC50040"
 # for patient in "BC51517"
 # for patient in "BC30001" "BC30002" "BC30003" "BC30004"
-for patient in "BC30004"
+for patient in "BC30007"
 # for patient in "BC42740"
 # for patient in "BC42334" "BC42740" "BC43740"
 # for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
@@ -36,7 +36,7 @@ do
 
     case $patient in
 
-          "BC30001" | "BC30002" | "BC30003" | "BC30004")
+          "BC30001" | "BC30002" | "BC30003" | "BC30004" | "BC30005" | "BC30006" | "BC30007")
             #    figure_spot_size=2000
             #    title_font_size=80
                figure_spot_size=18
@@ -60,7 +60,7 @@ do
     esac
 
 #     for gene in "C1S" "CD74" "MT2A" "ALB" "SERPINA1" "APOA1" "APOC1" "IGKC" "APOA2" "FGB" "FGA"
-     for gene in "C1S"
+     for gene in "ALB" "C1S"
     # for gene in "ALB" "C1S" "CD74" "MT2A"
     # for gene in "ALB"
     do

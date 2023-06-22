@@ -38,6 +38,9 @@ if __name__ == "__main__":
         "BC30002":"COVID_HCC2",
         "BC30003":"COVID_HCC3",
         "BC30004":"COVID_HCC4",
+        "BC30005":"COVID_HCC5",
+        "BC30006":"COVID_HCC6",
+        "BC30007":"COVID_HCC7",
         "BC42334":"NCC023Pre_NCC034Pre",
         "BC42740":"NCC027Pre_NCC040A2Pre",
         "BC43740":"NCC037Pre_NCC040A1Pre",
@@ -115,8 +118,12 @@ if __name__ == "__main__":
     # Add scatter
     npatients = len(vals)
     print(f"vals=\n{vals}")
-
-
+    """
+    for i, d in enumerate(data):
+    """
+    plt.scatter([1]* len(list(vals.values())[0]),list(vals.values())[0], c = 'red', zorder = 100)
+    plt.show()
+    
     # figroot = args.output_dir[0].split('/')[:-3]
     # figroot = '/'.join(figroot)
     # figroot = f"{figroot}/fig/visualize/"
