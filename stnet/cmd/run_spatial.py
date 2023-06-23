@@ -14,7 +14,6 @@ from PIL import Image
 
 
 def run_spatial(args=None):
-
     stnet.utils.logging.setup_logging(args.logfile, args.loglevel)
     logger = logging.getLogger(__name__)
     try:
@@ -39,7 +38,7 @@ def run_spatial(args=None):
 
         ### Split patients into folds ###
         patient = stnet.utils.util.get_spatial_patients()
-
+        print(f"{patient = }")
         train_patients = []
         test_patients = []
         # n_test = round(args.test * len(patient))
@@ -194,7 +193,7 @@ def run_spatial(args=None):
         # Compute mean expression for initial params in model and as baseline
         if args.task == "gene" or args.task == "geneb" or args.task == "count":
             t = time.time()
-
+            print("TRAINING WHY?")
             mean_expression = torch.zeros(train_dataset[0][2].shape)
             mean_expression_tumor = torch.zeros(train_dataset[0][2].shape)
             mean_expression_normal = torch.zeros(train_dataset[0][2].shape)
@@ -265,6 +264,7 @@ def run_spatial(args=None):
             # for (dataset, loader) in [("train", train_loader), ("test", test_loader)]:
             for (dataset, loader) in [("test", test_loader)]:
                 print("dataset, loader: ", dataset, loader)
+                print(dataset== "train", "WHYYYY")
                 t = time.time()
                 torch.set_grad_enabled(dataset == "train")
                 if args.model != "rf":
@@ -308,6 +308,7 @@ def run_spatial(args=None):
                     gene = gene.to(device)
 
                     if dataset == "test" and args.average:
+                        print("TESTING NOW")
                         batch, n_sym, c, h, w = X.shape
                         X = X.view(-1, c, h, w)
                     if args.model == "rf":

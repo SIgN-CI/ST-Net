@@ -23,7 +23,8 @@ dir="output_inference/$inference_on/${model}_model"
 
 # for patient in "BC50027"
 # for patient in "BC50040"
-for patient in "BC30007"
+# for patient in "BC30007"
+for patient in "BC30010" "BC30011" "BC30012" "BC30013" "BC30014" "BC30015"
 # for patient in "BC42740"
 # for patient in "BC42334" "BC42740" "BC43740"
 # for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
@@ -31,7 +32,7 @@ do
 
     case $patient in
 
-          "BC30001" | "BC30002" | "BC30003" | "BC30004" | "BC30005" | "BC30006" | "BC30007")
+        "BC30001" | "BC30002" | "BC30003" | "BC30004" | "BC30005" | "BC30006" | "BC30007" | "BC30010" | "BC30011" | "BC30012" | "BC30013" | "BC30014" | "BC30015") 
                figure_spot_size=18
                title_font_size=14
                ;;
@@ -55,8 +56,8 @@ do
     # for gene in "ALB" "C1S" "CD74" "MT2A"
 #     for gene in "C1S" "CD74" "MT2A" "ALB" "SERPINA1" "APOA1" "APOC1" "IGKC" "APOA2" "FGB" "FGA"
     # for gene in "C1S"
-    for gene in "ALB" "C1S" "CD74" "MT2A"
-    # for gene in "ALB"
+    # for gene in "ALB" "C1S" "CD74" "MT2A"
+    for gene in "ALB"
     do
         bin/visualize.py $dir/${patient}_1.npz --gene ${gene} --figure_spot_size $figure_spot_size --title_font_size $title_font_size --output_extension png --figroot $dir/${patient}_visualize/
 

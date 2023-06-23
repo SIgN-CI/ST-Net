@@ -67,7 +67,7 @@ count = []
 pred = []
 pixel = []
 
-# print(f"{args.filenames = }")
+print(f"{args.filenames = }")
 
 for f in args.filenames:
     data = np.load(f)
@@ -96,7 +96,7 @@ tumor = np.concatenate(tumor)
 count = np.concatenate(count)
 pred = np.concatenate(pred)
 pixel = np.concatenate(pixel)
-
+print(count)
 if pred.shape[0] == count.shape[0] and pred.shape[1] != count.shape[1]:
     # For total count prediction
     count = np.sum(count, 1, keepdims=True)
@@ -112,6 +112,7 @@ if task == "gene":
     index = np.argmax(gene_names == args.gene)
     c = count[:, index]
     p = pred[:, index]
+    print("are you the count? ", c) 
     this_gene = gene_names[index]
     print(f"{this_gene = }")
 
@@ -139,8 +140,8 @@ for (patient, section) in sorted(set(ps)):
     xsize = xmax - xmin + 2 * margin
     ysize = ymax - ymin + 2 * margin
     # ~
-    # figsize = (0.00017 * xsize, 0.00017 * ysize)
-    figsize = (0.0017 * xsize, 0.0017 * ysize)
+    figsize = (0.00017 * xsize, 0.00017 * ysize)
+    # figsize = (0.0017 * xsize, 0.0017 * ysize)
 
     fig = plt.figure(figsize=figsize)
     plt.imshow(image, aspect="equal", interpolation="nearest")
@@ -192,7 +193,16 @@ for (patient, section) in sorted(set(ps)):
     hcc_patients = {"BC30001":"HCC1",
                     "BC30002":"HCC2",
                     "BC30003":"HCC3",
-                    "BC30004":"HCC4"}
+                    "BC30004":"HCC4",
+                    "BC30005":"HCC5",
+                    "BC30006":"HCC6",
+                    "BC30007":"HCC7",
+                    "BC30010":"TCGA_LIHC1",
+                    "BC30011":"TCGA_LIHC2",
+                    "BC30012":"TCHA_LIHC3",
+                    "BC30013":"TCGA_LIHC4",
+                    "BC30014":"TCGA_LIHC5",
+                    "BC30015":"TCGA_LIHC6"}
 
     y90_patients = {"BC50027":"NCC027Post"}
 
@@ -275,6 +285,7 @@ for (patient, section) in sorted(set(ps)):
     value = p[mask]
     value = ((value - value.mean(0)) / (3 * value.std(0) + tol) + 0.5).clip(tol, 1 - tol)
     fig = plt.figure(figsize=figsize)
+    print(f"{mask = }", f"{pixel[mask,0] = }", f"{pixel = }")
     # ~
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=2, linewidth=0, edgecolors="none")
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=10, linewidth=0, edgecolors="none")
