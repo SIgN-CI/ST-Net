@@ -70,6 +70,7 @@ pixel = []
 print(f"{args.filenames = }")
 
 for f in args.filenames:
+    print(args.filenames)
     data = np.load(f)
 
     if task is not None:

@@ -15,7 +15,8 @@ inference_on="COVID_HCC"
 # model=BC51517
 # model=BC52337
 # model=BC53934
-model=BC30007
+# model=BC30007
+model=BC30004
 # model=HCC1234
 
 ## Set automatically

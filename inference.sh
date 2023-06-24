@@ -17,7 +17,7 @@ GPU=0
 # model_to_load="BC53934_56"
 # model_to_load="HCC12_100"
 model_to_load="BC30007_model"
-
+# model_to_load="BC30004_100"
 ## (3) Set this
 ## Set the patients that the model was trained on
 # trained_on="BC30001 BC30002"
@@ -38,8 +38,8 @@ epochs=1
 # for patient in "BC30001"
 # for patient in "BC30002"
 # for patient in "BC30003"
-#for patient in "BC30007"
-for patient in BC30010 BC30011 BC30012 BC30013 BC30014 BC30015
+for patient in "BC30010"
+# for patient in BC30010 BC30011 BC30012 BC30013 BC30014 BC30015
 # for patient in "BC30005"
 # for patient in "BC50027"
 # for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
@@ -51,7 +51,7 @@ do
 
           "BC30001" | "BC30002" | "BC30003" | "BC30004" | "BC30005" | "BC30006" | "BC30007" | "BC30010" | "BC30011" | "BC30012" | "BC30013" | "BC30014" | "BC30015")
                data="COVID_HCC"
-               window=30
+               window=30    
                ;;
 
           "BC42334" | "BC42740" | "BC43740")

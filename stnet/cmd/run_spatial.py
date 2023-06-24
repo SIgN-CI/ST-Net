@@ -38,7 +38,7 @@ def run_spatial(args=None):
 
         ### Split patients into folds ###
         patient = stnet.utils.util.get_spatial_patients()
-        print(f"{patient = }")
+        print(f"{args.seed,patient = }")
         train_patients = []
         test_patients = []
         # n_test = round(args.test * len(patient))
@@ -105,7 +105,7 @@ def run_spatial(args=None):
         logger.info("Estimating mean (" + str(mean) + ") and std (" + str(std) + " took " + str(time.time() - t))
 
         transform = []
-        if args.window_raw is not None:  # TODO: and not equal to window
+        if args.window_raw is not None:  # TODO: and not equal to window, hello"
             transform.append(torchvision.transforms.RandomCrop((args.window, args.window)))
         if args.brightness != 0 or args.contrast != 0 or args.saturation != 0 or args.hue:
             transform.append(torchvision.transforms.ColorJitter(args.brightness, args.contrast, args.saturation, args.hue))
@@ -133,7 +133,8 @@ def run_spatial(args=None):
         if args.task == "tumor":
             outputs = 2
         elif args.task == "gene":
-            outputs = train_dataset[0][2].shape[0]
+            outputs = train_dataset[0][2].shape[0]stnet.datasets.Spatial(test_patients, transform, window=args.window, gene_filter=args.gene_filter, downsample=args.downsample, norm=args.norm, gene_transform=args.gene_transform, feature=(args.model == "rf"))
+
         elif args.task == "geneb":
             outputs = 2 * train_dataset[0][2].shape[0]
         elif args.task == "count":
