@@ -38,8 +38,10 @@ epochs=1
 # for patient in "BC30001"
 # for patient in "BC30002"
 # for patient in "BC30003"
-for patient in "BC30010"
-# for patient in BC30010 BC30011 BC30012 BC30013 BC30014 BC30015
+# for patient in "BC30007"
+# for patient in BC30020 BC30021 BC30022 BC30023 BC30024 BC30025 BC30030 BC30031 BC30032 BC30033 BC30034 BC30035 BC30040 BC30041 BC30042 BC30043 BC30044 BC30045
+# for patient in BC30021 BC30030 BC30031 BC30033 BC30041 BC30043
+for patient in BC30010 BC30011 BC30012 BC30013 BC30014 BC30015
 # for patient in "BC30005"
 # for patient in "BC50027"
 # for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
@@ -49,9 +51,9 @@ for patient in "BC30010"
 do
      case $patient in
 
-          "BC30001" | "BC30002" | "BC30003" | "BC30004" | "BC30005" | "BC30006" | "BC30007" | "BC30010" | "BC30011" | "BC30012" | "BC30013" | "BC30014" | "BC30015")
+          "BC30001" | "BC30002" | "BC30003" | "BC30004" | "BC30005" | "BC30006" | "BC30007" | "BC30010" | "BC30011" | "BC30012" | "BC30013" | "BC30014" | "BC30015" | "BC30020" | "BC30021" | "BC30022" | "BC30023" | "BC30024" | "BC30025" | "BC30030" | "BC30031" | "BC30032" | "BC30033" | "BC30034" | "BC30035" | "BC30040" | "BC30041" | "BC30042" | "BC30043" | "BC30044" | "BC30045")
                data="COVID_HCC"
-               window=30    
+               window=296    
                ;;
 
           "BC42334" | "BC42740" | "BC43740")

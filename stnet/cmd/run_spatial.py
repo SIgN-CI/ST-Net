@@ -133,7 +133,8 @@ def run_spatial(args=None):
         if args.task == "tumor":
             outputs = 2
         elif args.task == "gene":
-            outputs = train_dataset[0][2].shape[0]stnet.datasets.Spatial(test_patients, transform, window=args.window, gene_filter=args.gene_filter, downsample=args.downsample, norm=args.norm, gene_transform=args.gene_transform, feature=(args.model == "rf"))
+            outputs = train_dataset[0][2].shape[0]
+            # stnet.datasets.Spatial(test_patients, transform, window=args.window, gene_filter=args.gene_filter, downsample=args.downsample, norm=args.norm, gene_transform=args.gene_transform, feature=(args.model == "rf"))
 
         elif args.task == "geneb":
             outputs = 2 * train_dataset[0][2].shape[0]

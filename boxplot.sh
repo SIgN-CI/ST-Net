@@ -2,8 +2,8 @@
 
 ## [1] SET THIS
 ## Select the inference patient type
-# inference_type="COVID_HCC"
-inference_type="Y90Pre"
+inference_type="COVID_HCC"
+# inference_type="Y90Pre"
 # inference_type="Y90Post"
 
 ## [2] SET THIS
@@ -14,7 +14,7 @@ inference_type="Y90Pre"
 # model=BC51218
 # model=BC51517
 # model=BC52337
-model=BC53934
+model=BC30007
 # model=HCC12
 # model=HCC1234
 

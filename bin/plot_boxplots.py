@@ -31,21 +31,30 @@ if __name__ == "__main__":
     # print(f"{args.output_dir[0] = }")
     # print(f"{npzs = }")
     # print(f"{len(npzs) = }")
-
-    patient_map = {
-        "BC42334":"NCC023Pre_NCC034Pre",
-        "BC42740":"NCC027Pre_NCC040A2Pre",
-        "BC43740":"NCC037Pre_NCC040A1Pre",
-        "BC50027":"NCC027Post",
-        "BC50040":"NCC040Post",
-        "BC50111":"NCC001Post_NCC011Post",
-        "BC51218":"NCC012Post_NCC018Post",
-        "BC51517":"NCC015Post_NCC017Post",
-        "BC52337":"NCC023Post_NCC037Post",
-        "BC53934":"NCC039Post_NCC034Post",
-        "HCC12"  :"COVID_HCC1,2",
-        "HCC1234":"COVID_HCC1,2,3,4"
-    }
+    patient_map = {"BC30001":"COVID_HCC1",
+                   "BC30002":"COVID_HCC2",
+                   "BC30003":"COVID_HCC3",
+                   "BC30004":"COVID_HCC4",
+                   "BC30005":"COVID_HCC1",
+                   "BC30006":"COVID_HCC2",
+                   "BC30007":"COVID_HCC3",
+                   "BC30010":"TCGA_LIHC0",
+                   "BC30011":"TCGA_LIHC1",
+                   "BC30012":"TCHA_LIHC2",
+                   "BC30013":"TCGA_LIHC3",
+                   "BC30014":"TCGA_LIHC4",
+                   "BC30015":"TCGA_LIHC5",
+                   'BC30020': 'TCGA_LIHC0_rgb', 'BC30021': 'TCGA_LIHC1_rgb', 'BC30022': 'TCGA_LIHC2_macenko', 'BC30023': 'TCGA_LIHC3_reinhard', 'BC30024': 'TCGA_LIHC4_rgb', 'BC30025': 'TCGA_LIHC5_rgb', 'BC30030': 'TCGA_LIHC0_rgb', 'BC30031': 'TCGA_LIHC1_rgb', 'BC30032': 'TCGA_LIHC2_macenko', 'BC30033': 'TCGA_LIHC3_reinhard', 'BC30034': 'TCGA_LIHC4_rgb', 'BC30035': 'TCGA_LIHC5_rgb', 'BC30040': 'TCGA_LIHC0_rgb', 'BC30041': 'TCGA_LIHC1_rgb', 'BC30042': 'TCGA_LIHC2_macenko', 'BC30043': 'TCGA_LIHC3_reinhard', 'BC30044': 'TCGA_LIHC4_rgb', 'BC30045': 'TCGA_LIHC5_rgb',
+                   "BC50111":"NCC001Post_NCC011Post",
+                   "BC51218":"NCC012Post_NCC018Post",
+                   "BC51517":"NCC015Post_NCC017Post",
+                   "BC52337":"NCC023Post_NCC037Post",
+                   "BC42334":"NCC023Pre_NCC034Pre"  ,
+                   "BC50027":"NCC027Post"           ,
+                   "BC42740":"NCC027Pre_NCC040A2Pre",
+                   "BC43740":"NCC037Pre_NCC040A1Pre",
+                   "BC53934":"NCC039Post_NCC034Post",
+                   "BC50040":"NCC040Post"           }
 
     vals = {}
     for npz in npzs:
