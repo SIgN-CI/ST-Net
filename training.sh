@@ -3,7 +3,7 @@ ngenes=250
 model=densenet121
 
 # window=10
-window=30
+window=296
 # window=74
 # window=75
 # window=224

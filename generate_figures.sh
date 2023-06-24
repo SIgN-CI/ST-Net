@@ -60,7 +60,7 @@ do
     esac
 
 #     for gene in "C1S" "CD74" "MT2A" "ALB" "SERPINA1" "APOA1" "APOC1" "IGKC" "APOA2" "FGB" "FGA"
-     for gene in "ALB" "C1S"
+     for gene in "ALB" "C1S" "CD74"
     # for gene in "ALB" "C1S" "CD74" "MT2A"
     # for gene in "ALB"
     do
