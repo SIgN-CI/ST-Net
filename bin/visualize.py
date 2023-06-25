@@ -314,6 +314,9 @@ for (patient, section) in sorted(set(ps)):
 
     # Create scatter plot
     # plt.scatter(x, y, c=my_data, cmap=plt.cm.colors.ListedColormap(color_scale))
+    plt.scatter([i for i in range(len(value))], value)
+    plt.show()
+    fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_pred_lolol.{args.output_extension}")
 
 
     print(f"{mask = }", f"{pixel[mask,0] = }", f"{pixel = }")
