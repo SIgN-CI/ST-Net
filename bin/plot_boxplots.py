@@ -87,6 +87,10 @@ if __name__ == "__main__":
     # print(len(vals))
     # print(len(vals[0]))
     # print(len(vals[1]))
+    print(f"{gene_names=}")
+    print(f"{predictions=}")
+    print(f"{counts=}")
+    
 
     title_size = 20
     label_size = 16
@@ -121,6 +125,11 @@ if __name__ == "__main__":
     """
     for i, d in enumerate(data):
     """
+    ALB_CD74_coord_list = [] 
+    for i, name in enumerate(gene_names):
+        if name=="ALB" or name=="CD74":
+            ALB_coord_list.append((name, 
+
     plt.scatter([1]* len(list(vals.values())[0]),list(vals.values())[0], c = 'red', zorder = 100)
     plt.show()
     
