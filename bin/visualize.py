@@ -293,6 +293,41 @@ for (patient, section) in sorted(set(ps)):
     fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_pred.{args.output_extension}")
     print(f"Saved \"{pred_title}\".")
     plt.close(fig)
+    
+
+
+    """std_norm_scatterplot"""
+    p_norm = p[mask]
+    c_norm = c[mask]
+    p_norm = ((p_norm - p_norm.mean(0)) / (3 * p_norm.std(0) + tol) + 0.5).clip(tol, 1 - tol)
+    c_norm = ((c_norm - c_norm.mean(0)) / (3 * c_norm.std(0) + tol) + 0.5).clip(tol, 1 - tol)
+    fig, ax = plt.subplots(figsize=figsize)
+    # ax.scatter(p,c, s=300)
+    # ax.scatter(p,c, s=12)
+    if patient[:3] == "BC3":
+        scatter_size = 3
+    elif patient[:3] == "BC5":
+        scatter_size = 16
+    ax.scatter(p_norm,c_norm, s=scatter_size)
+    # ax.set_xlabel(f"\nPredictions", size=80)
+    # ax.set_ylabel(f"Ground Truth\n", size=80)
+    # ax.set_xlabel(f"\nPredictions", size=12)
+    # ax.set_ylabel(f"Ground Truth\n", size=12)
+    ax.set_xlabel(f"\nPredictions", size=12)
+    ax.set_ylabel(f"Ground Truth", size=12)
+    lims = [
+        np.min([ax.get_xlim(), ax.get_ylim()]),  # min of both axes
+        np.max([ax.get_xlim(), ax.get_ylim()]),  # max of both axes
+    ]
+    # ax.plot(lims, lims, 'k-', alpha=0.75, zorder=0, color='r')
+    ax.plot(lims, lims, alpha=0.75, zorder=0, color='r')
+    ax.set_aspect('equal')
+    ax.set_xlim(lims)
+    ax.set_ylim(lims)
+    plt.tight_layout()
+    plt.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_std_norm_scatter.{args.output_extension}")
+    plt.close(fig)
+
 
     """Scatterplot"""
     fig, ax = plt.subplots(figsize=figsize)
