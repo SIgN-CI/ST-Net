@@ -55,7 +55,7 @@ cb = matplotlib.colorbar.ColorbarBase(plt.gca(), cmap=cmap,
 cb.set_ticks(range(-3, 4))
 cb.set_label("Standard deviations from mean")
 plt.tight_layout()
-# fig.savefig(args.figroot + "colorbar.pdf")
+fig.savefig(args.figroot + "colorbar.pdf")
 plt.close(fig)
 
 task = None
@@ -127,6 +127,7 @@ if task == "gene":
 
 for (patient, section) in sorted(set(ps)):
     tol = 1e-5
+    # tol = 0.3
     mask = np.array([((p == patient) and (s == section)) for (p, s) in ps])
     margin = 112 + 50
     xmin, xmax, ymin, ymax = min(pixel[mask, 0]), max(pixel[mask, 0]), min(pixel[mask, 1]), max(pixel[mask, 1])
@@ -237,7 +238,7 @@ for (patient, section) in sorted(set(ps)):
         "MT2A": 11
     }
 
-    patient_map = {"BC30001":"COVID_HCC1",
+    patient_map = {"BC30001":"HCC inference",
                    "BC30002":"COVID_HCC2",
                    "BC30003":"COVID_HCC3",
                    "BC30004":"COVID_HCC4",
@@ -301,13 +302,33 @@ for (patient, section) in sorted(set(ps)):
 
     """Prediction"""
     value = p[mask]
+    print(value)
     value = ((value - value.mean(0)) / (3 * value.std(0) + tol) + 0.5).clip(tol, 1 - tol)
     fig = plt.figure(figsize=figsize)
+
+    quantiles = np.percentile(value, np.arange(0, 101, 25))
+
+    #    Define color scale
+    color_scale = ['Red', 'Blue', 'Green', 'Purple']
+    color_scale_names = [str(q) for q in quantiles]
+
+    # Create scatter plot
+    # plt.scatter(x, y, c=my_data, cmap=plt.cm.colors.ListedColormap(color_scale))
+
+
     print(f"{mask = }", f"{pixel[mask,0] = }", f"{pixel = }")
     # ~
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=2, linewidth=0, edgecolors="none")
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=10, linewidth=0, edgecolors="none")
     plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=visualize_spot_size, linewidth=0, edgecolors="none")
+#    plt.scatter(pixel[mask, 0], pixel[mask, 1], c=value, cmap=plt.cm.colors.ListedColormap(color_scale), s=visualize_spot_size, linewidth=0, edgecolors="none")
+ 
+    # Create colorbar
+    cbar = plt.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap))
+    # cbar = plt.colorbar()
+    # cbar = plt.colorbar()
+    #cbar.set_ticks(quantiles)
+    #cbar.set_ticklabels(color_scale_names)
     plt.gca().axis("off")
     plt.gca().set_aspect("equal")
     plt.xticks([])
@@ -325,6 +346,7 @@ for (patient, section) in sorted(set(ps)):
     fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_pred.{args.output_extension}")
     print(f"Saved \"{pred_title}\".")
     plt.close(fig)
+    
 
     """Tumor annotation"""
     value = tumor[mask, 0].clip(tol, 1 - tol)

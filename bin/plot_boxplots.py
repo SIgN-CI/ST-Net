@@ -28,6 +28,8 @@ if __name__ == "__main__":
     npzs = glob(f"{args.output_dir[0]}/*_{args.epoch}.npz",recursive=True)
     # Sort npzs found by glob, so that boxplot is logical and pleasant
     npzs.sort(key=lambda x: int(os.path.basename(x).split(f"_{args.epoch}.")[0][2:]))
+    #TAKE NOTE, TEMPORARY FIX
+    npzs = [npzs[0]]
     # print(f"{args.output_dir[0] = }")
     # print(f"{npzs = }")
     # print(f"{len(npzs) = }")
