@@ -126,9 +126,25 @@ if __name__ == "__main__":
     for i, d in enumerate(data):
     """
     ALB_CD74_coord_list = [] 
-    for i, name in enumerate(gene_names):
-        if name=="ALB" or name=="CD74":
-            ALB_coord_list.append((name, 
+    vals_new = list(list(vals.values())[0])
+    print(f"{vals_new=}")
+    top_i = sorted(range(len(vals_new)), key=lambda i: vals_new[i], reverse=True)[:10]
+    print(vals_new)
+    direction = 1
+    y_flag = 0.0
+    for i in top_i:
+        #if name=="ALB" or name=="CD74":
+        ALB_CD74_coord_list.append((gene_names[i],(1,i)))
+
+        # Coordinates of the point
+        point_x = 1.0
+        point_y = list(list(vals.values())[0])[i]
+        print("point_y", point_y)
+        # Add the label with an arrow and text
+        plt.annotate(gene_names[i], xy=(point_x, point_y), xytext=(point_x + 0.2*(direction), point_y - y_flag), arrowprops=dict(arrowstyle='->'), fontsize=30)
+        direction *= -1
+        y_flag += 0.05
+
 
     plt.scatter([1]* len(list(vals.values())[0]),list(vals.values())[0], c = 'red', zorder = 100)
     plt.show()
