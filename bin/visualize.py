@@ -301,20 +301,39 @@ for (patient, section) in sorted(set(ps)):
     plt.close(fig)
 
     """Prediction"""
-    value = p[mask]
-    print(value)
+    value = p[mask] 
+    # Open a file with access mode 'a'
+    file_object = open('unique_values.txt', 'a')
+
+    # Append 'hello' at the end of file
+    file_object.write(f"{patient}_{args.gene}: " +  str(np.unique(value)))
+
+    # Close the file
     value = ((value - value.mean(0)) / (3 * value.std(0) + tol) + 0.5).clip(tol, 1 - tol)
     fig = plt.figure(figsize=figsize)
-
+    file_object.write(", " + str(np.unique(value)) + "\n")
+    file_object.close()
     quantiles = np.percentile(value, np.arange(0, 101, 25))
 
     #    Define color scale
     color_scale = ['Red', 'Blue', 'Green', 'Purple']
     color_scale_names = [str(q) for q in quantiles]
+    """
+    data = value
+    quantiles = np.quantile(data, [0.25, 0.5, 0.75])
+    
+    lists_by_quantile = [
+    data[data <= quantiles[0]],
+    data[(data > quantiles[0]) & (data <= quantiles[1])],
+    data[(data > quantiles[1]) & (data <= quantiles[2])],
+    data[data > quantiles[2]]
+]
 
+    value = max(lists_by_quantile, key=len)
+    """
     # Create scatter plot
     # plt.scatter(x, y, c=my_data, cmap=plt.cm.colors.ListedColormap(color_scale))
-    plt.scatter([i for i in range(len(value))], value)
+    plt.scatter([i for i in range(len(value))], p[mask])
     plt.show()
     fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_pred_lolol.{args.output_extension}")
 
@@ -323,15 +342,15 @@ for (patient, section) in sorted(set(ps)):
     # ~
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=2, linewidth=0, edgecolors="none")
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=10, linewidth=0, edgecolors="none")
-    plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=visualize_spot_size, linewidth=0, edgecolors="none")
-#    plt.scatter(pixel[mask, 0], pixel[mask, 1], c=value, cmap=plt.cm.colors.ListedColormap(color_scale), s=visualize_spot_size, linewidth=0, edgecolors="none")
+    # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=visualize_spot_size, linewidth=0, edgecolors="none")
+    plt.scatter(pixel[mask, 0], pixel[mask, 1], c=value, cmap=plt.cm.colors.ListedColormap(color_scale), s=visualize_spot_size, linewidth=0, edgecolors="none")
  
     # Create colorbar
-    cbar = plt.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap))
+    # cbar = plt.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap))
+    cbar = plt.colorbar(fraction = 0.046, pad = 0.04)
     # cbar = plt.colorbar()
-    # cbar = plt.colorbar()
-    #cbar.set_ticks(quantiles)
-    #cbar.set_ticklabels(color_scale_names)
+    cbar.set_ticks(quantiles)
+    cbar.set_ticklabels(color_scale_names)
     plt.gca().axis("off")
     plt.gca().set_aspect("equal")
     plt.xticks([])
