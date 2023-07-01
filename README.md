@@ -14,7 +14,7 @@ Full workflow:
 
 ```crop_to_spot.py```
 ---------------------------
-Tiles TIF image to individual spots
+Tiles TIF image to individual spots 
 
 **Inputs:**
 1. TIF image (OME-TIFF doesn't work as far as I can tell)
