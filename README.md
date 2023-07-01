@@ -20,4 +20,4 @@ Tiles TIF image to individual spots
 1. TIF image (OME-TIFF doesn't work as far as I can tell)
 2. `tissue_positions_list.csv` in Visium data format (CTRL-F 'tissue_positions.csv' in https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/output/spatial to view data format.)
 
-**Outputs:** Individual TIF images corresponding to each in-tissue spot inside new directory corresponding to patient name. Patient name may have to be added to patient map dictionary.
+**Outputs:** Individual TIF images corresponding to each in-tissue spot inside new directory corresponding to patient name. Patient name may have to be manually added to patient map dictionary in the script.
