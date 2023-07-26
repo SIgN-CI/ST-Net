@@ -146,7 +146,7 @@ for (patient, section) in sorted(set(ps)):
     # figsize = (0.0017 * xsize, 0.0017 * ysize)
 
     fig = plt.figure(figsize=figsize)
-    plt.imshow(image, aspect="equal", interpolation="nearest")
+    # plt.imshow(image, aspect="equal", interpolation="nearest")
     fig.patch.set_visible(False)
     plt.gca().axis("off")
     plt.gca().set_aspect("equal")
@@ -191,6 +191,7 @@ for (patient, section) in sorted(set(ps)):
     # ~
     # title_font_size = 14
     title_font_size = args.title_font_size
+    """
     hcc_patients = {"BC30001":"HCC1",
 "BC30002":"HCC2",
 "BC30003":"HCC3",
@@ -222,6 +223,19 @@ for (patient, section) in sorted(set(ps)):
 "BC30043":"TCGA_LIHC3_reinhard",
 "BC30044":"TCGA_LIHC4_rgb",
 "BC30045":"TCGA_LIHC5_rgb"}
+    """
+    hcc_patients = {"BC30001":"HCC1",
+"BC30002":"HCC2",
+"BC30003":"HCC3",
+"BC30004":"HCC4",
+"BC30005":"HCC5",
+"BC30006":"HCC6",
+"BC30007":"HCC7"}
+    start = 50
+    end = 70
+    for i in range(start, end):
+        hcc_patients[f"BC{30000+i}"] = f"TCGA_LIHC_top_bottom_{i}"
+
     y90_patients = {"BC50027":"NCC027Post"}
 
     gene_order_dict = {
@@ -237,7 +251,8 @@ for (patient, section) in sorted(set(ps)):
         "CD74": 10,
         "MT2A": 11
     }
-
+    patient_map = hcc_patients
+    """
     patient_map = {"BC30001":"HCC inference",
                    "BC30002":"COVID_HCC2",
                    "BC30003":"COVID_HCC3",
@@ -262,7 +277,7 @@ for (patient, section) in sorted(set(ps)):
                    "BC43740":"NCC037Pre_NCC040A1Pre",
                    "BC53934":"NCC039Post_NCC034Post",
                    "BC50040":"NCC040Post"           }
-
+    """
     # if patient in hcc_patients.keys():
     #     gt_title = f"{hcc_patients[patient]} {args.gene} Ground Truth"
     #     pred_title = f"{hcc_patients[patient]} {args.gene} Prediction"
