@@ -225,8 +225,8 @@ for (patient, section) in sorted(set(ps)):
 "BC30005":"HCC5",
 "BC30006":"HCC6",
 "BC30007":"HCC7"}
-    start = 90
-    end = 95
+    start = 50
+    end = 69
     for i in range(start, end):
         hcc_patients[f"BC{30000+i}"] = f"TCGA_LIHC_top_bottom_{i}"
 
