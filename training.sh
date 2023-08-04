@@ -27,6 +27,7 @@ using_to_train="COVIDHCC"
 # for patient in "BC30001"
 # for patient in "BC30002"
 # for patient in "BC30003"
+#change this based on the patients that you want to eval on 
 for patient in "BC30007"
 # for patient in "BC30005"
 # for patient in "BC50027"
