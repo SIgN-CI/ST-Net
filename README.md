@@ -8,11 +8,32 @@ For more details, see the acompanying paper,
   by Bryan He, Ludvig Bergenstråhle, Linnea Stenbeck, Abubakar Abid, Alma Andersson, Åke Borg, Jonas Maaskola, Joakim Lundeberg & James Zou.<br/>
   <i>Nature Biomedical Engineering</i> (2020).
 
+
+
 RUN ON IN-HOUSE DATASET
 -----------------------
 
-Creating the environment
+key folders and git branches
 ------
+branches:
+sam_individual_window (training) 
+sam_inference (inference) 
+
+folders:
+data/hist2tscript
+generate_figures.sh
+inference.sh
+training.sh
+boxplot.sh (in sam_individual_window)
+abstract/generate_figures.sh
+
+
+
+
+activating the environment
+------
+conda activate stnet 
+
 
 Downloading Dataset and Configuring Paths
 -----------------------------------------
@@ -112,7 +133,22 @@ end=55
 #for i in $(seq $start $end);
     #patient="BC300$i" 
 
+Generating figures
+--------
 
+Generate TCGA_figures 
+---------------
+
+
+Generate spatial transcriptomic expression info 
+---------------
+
+
+Generate spatial transcriptomic expression info 
+---------------
+
+
+Generate boxplot of spearman's correlation (under sam_individual_window) 
 
 
 ORIGINAL PAPER INSTRUCTIONS
