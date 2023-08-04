@@ -67,10 +67,8 @@ count = []
 pred = []
 pixel = []
 
-print(f"{args.filenames = }")
 
 for f in args.filenames:
-    print(args.filenames)
     data = np.load(f)
 
     if task is not None:
@@ -97,7 +95,6 @@ tumor = np.concatenate(tumor)
 count = np.concatenate(count)
 pred = np.concatenate(pred)
 pixel = np.concatenate(pixel)
-print(count)
 if pred.shape[0] == count.shape[0] and pred.shape[1] != count.shape[1]:
     # For total count prediction
     count = np.sum(count, 1, keepdims=True)
@@ -113,9 +110,7 @@ if task == "gene":
     index = np.argmax(gene_names == args.gene)
     c = count[:, index]
     p = pred[:, index]
-    print("are you the count? ", c) 
     this_gene = gene_names[index]
-    print(f"{this_gene = }")
 
     # with open(f"/home/tester/bokleong/ST-Net_custom/custom_fig/genes.txt","w") as f:
     #     f.write(f"{len(gene_names) = }\n")
@@ -134,7 +129,6 @@ for (patient, section) in sorted(set(ps)):
 
     # TODO: check aspect ratio
     # TODO: remove box/axis 
-    print(patient, section, flush=True)
     # image_filename = os.path.join(stnet.config.SPATIAL_RAW_ROOT, dataset.subtype[patient], patient, "{}_{}.tif".format(patient, section))
     image_filename = os.path.join(stnet.config.SPATIAL_RAW_ROOT, "HE_{}_{}.tif".format(patient, section))
     image = plt.imread(image_filename)
@@ -231,8 +225,8 @@ for (patient, section) in sorted(set(ps)):
 "BC30005":"HCC5",
 "BC30006":"HCC6",
 "BC30007":"HCC7"}
-    start = 50
-    end = 70
+    start = 90
+    end = 95
     for i in range(start, end):
         hcc_patients[f"BC{30000+i}"] = f"TCGA_LIHC_top_bottom_{i}"
 
@@ -315,7 +309,35 @@ for (patient, section) in sorted(set(ps)):
     print(f"Saved \"{gt_title}\".")
     plt.close(fig)
 
-    """Prediction"""
+    """Prediction"""  
+    value = p[mask]
+    value = ((value - value.mean(0)) / (3 * value.std(0) + tol) + 0.5).clip(tol, 1 - tol)
+    fig = plt.figure(figsize=figsize)
+    # ~
+    # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=2, linewidth=0, edgecolors="none")
+    # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=10, linewidth=0, edgecolors="none")
+    plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=visualize_spot_size, linewidth=0, edgecolors="none")
+    plt.gca().axis("off")
+    plt.gca().set_aspect("equal")
+    plt.xticks([])
+    plt.yticks([])
+    plt.axis([xmin - margin, xmax + margin, ymin - margin, ymax + margin])
+    plt.gca().invert_yaxis()
+    try:
+        plt.title(f"\n{pred_title}\nSpearman's Correlation = {np.round(spearmanr,5)} [{np.round(pval,5)}]\n",fontdict={'fontsize':title_font_size})
+    except Exception as e:
+        # print(e)
+        plt.title(f"\n{pred_title}\nSpearman's Correlation = {np.round(spearmanr,5)} [{pval}]\n",fontdict={'fontsize':title_font_size})
+    plt.tight_layout()
+    # fig.savefig("{}{}_{}_{}_{}.pdf".format(args.figroot, patient, section, args.gene, "pred"))
+    # fig.savefig("{}{}_{}_{}.pdf".format(args.figroot, patient, args.gene, "pred"))
+    fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_pred.{args.output_extension}")
+    print(f"Saved \"{pred_title}\".")
+    plt.close(fig)
+    
+ 
+
+    """
     value = p[mask] 
     # Open a file with access mode 'a'
     file_object = open('unique_values.txt', 'a')
@@ -326,6 +348,7 @@ for (patient, section) in sorted(set(ps)):
     # Close the file
     value = ((value - value.mean(0)) / (3 * value.std(0) + tol) + 0.5).clip(tol, 1 - tol)
     fig = plt.figure(figsize=figsize)
+    
     file_object.write(", " + str(np.unique(value)) + "\n")
     file_object.close()
     quantiles = np.percentile(value, np.arange(0, 101, 25))
@@ -333,31 +356,21 @@ for (patient, section) in sorted(set(ps)):
     #    Define color scale
     color_scale = ['Red', 'Blue', 'Green', 'Purple']
     color_scale_names = [str(q) for q in quantiles]
-    """
-    data = value
-    quantiles = np.quantile(data, [0.25, 0.5, 0.75])
     
-    lists_by_quantile = [
-    data[data <= quantiles[0]],
-    data[(data > quantiles[0]) & (data <= quantiles[1])],
-    data[(data > quantiles[1]) & (data <= quantiles[2])],
-    data[data > quantiles[2]]
-]
-
-    value = max(lists_by_quantile, key=len)
-    """
     # Create scatter plot
     # plt.scatter(x, y, c=my_data, cmap=plt.cm.colors.ListedColormap(color_scale))
     plt.scatter([i for i in range(len(value))], p[mask])
     plt.show()
     fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_pred_lolol.{args.output_extension}")
-
+    
 
     print(f"{mask = }", f"{pixel[mask,0] = }", f"{pixel = }")
-    # ~
+    """
+#
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=2, linewidth=0, edgecolors="none")
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=10, linewidth=0, edgecolors="none")
     # plt.scatter(pixel[mask, 0], pixel[mask, 1], color=list(map(cmap, value)), s=visualize_spot_size, linewidth=0, edgecolors="none")
+    """
     plt.scatter(pixel[mask, 0], pixel[mask, 1], c=value, cmap=plt.cm.colors.ListedColormap(color_scale), s=visualize_spot_size, linewidth=0, edgecolors="none")
  
     # Create colorbar
@@ -375,7 +388,6 @@ for (patient, section) in sorted(set(ps)):
     try:
         plt.title(f"{pred_title}\nSpearman's Correlation = {np.round(spearmanr,5)} [{np.round(pval,5)}]\n",fontdict={'fontsize':title_font_size})
     except Exception as e:
-        print(e)
         plt.title(f"{pred_title}\nSpearman's Correlation = {np.round(spearmanr,5)} [{pval}]\n",fontdict={'fontsize':title_font_size})
     plt.tight_layout()
     # fig.savefig("{}{}_{}_{}_{}.pdf".format(args.figroot, patient, section, args.gene, "pred"))
@@ -383,7 +395,7 @@ for (patient, section) in sorted(set(ps)):
     fig.savefig(f"{args.figroot}[{gene_order_dict[args.gene]}] {patient}_{args.gene}_pred.{args.output_extension}")
     print(f"Saved \"{pred_title}\".")
     plt.close(fig)
-    
+    """    
 
     """Tumor annotation"""
     value = tumor[mask, 0].clip(tol, 1 - tol)
