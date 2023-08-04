@@ -13,15 +13,28 @@ For more details, see the acompanying paper,
 RUN ON IN-HOUSE DATASET
 -----------------------
 
-key folders and git branches
+key folders, bash scripts and git branches
 ------
 branches:
+```git checkout <insert branch name>```
 sam_individual_window (training) 
 sam_inference (inference) 
 
-folders:
+script folders:
 data/hist2tscript
 generate_figures.sh
+stnet
+
+output folders:
+(for training) ~/ST-Net/output/train_COVIDHCC_test_BC300xx/
+- BC300xx_visualize (figures generated)
+- BC30007_model.pt (saved model)
+
+(for inference) ~/ST-Net/output_inference/COVID_HCC/BC300xx_model
+- BC300xx_visualize (figures generated)
+
+
+bash scripts:
 inference.sh
 training.sh
 boxplot.sh (in sam_individual_window)
@@ -30,7 +43,7 @@ abstract/generate_figures.sh
 
 
 
-activating the environment
+****** activating the environment ******
 ------
 conda activate stnet 
 
@@ -39,8 +52,6 @@ Downloading Dataset and Configuring Paths
 -----------------------------------------
 By default, the raw data must be downloaded from [here](https://entuedu-my.sharepoint.com/personal/bchua024_e_ntu_edu_sg/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fbchua024%5Fe%5Fntu%5Fedu%5Fsg%2FDocuments%2FGoodNotes%20Backup%2Faa%20Y4S2%2FSGH%20Biomedical%20Internship%2FST%2DNet&ct=1690862134954&or=Teams%2DHL&ga=1) and placed at `data/hist2tscript/`.
 The processed files will then be written to `data/hist2tscript-patch/`.
-These locations  can be changed by creating a config file (the priority for the filename is `stnet.cfg`, `.stnet.cfg`, `~/stnet.cfg`, `~/.stnet.cfg`).
-An example config file is given as `example.cfg`.
 
 
 Preparing Spatial Data
@@ -56,7 +67,12 @@ Training models
 The models for the main results can be trained by running:
 
 ```
-bash training.sh
+git checkout sam_individual_window
+cd data/hist2tscript
+#change the start and the end to the corresponding samples that you want to train on. e.g. BC30020 to BC30022 will change 
+vim rename.py 
+python rename.py
+vim training.sh
 ```
 
 Change the patients based on the names that you would like to train on
@@ -66,10 +82,17 @@ for patient in "BC30001" "BC30002" <other sample names>
 ```
 The detected data to use for training would be the based on having a .tif file in the data/hist2tscript with a corresponding name
 
-
+```
+bash training.sh
+```
 Relevant arguments can be changed to accomodate customisation, see example below:
+
+**important to note** if the tile size changes, you must change the window size correspondingly. For example, if a tile in your data set is 224, then the window must be 224, else training will not happen properly. 
+```
+vim training.sh
 ```
 
+```
 ngenes=250
 model=densenet121
 window=224
@@ -78,18 +101,80 @@ do
     bin/cross_validate.py output/${model}_${window}/top_${ngenes}/${patient}_ 4 50 ${patient} --lr 1e-6 --window ${window} --model ${model} --pretrain --average --batch 32 --workers 7 --gene_n ${ngenes} --norm
 done
 ```
+After training, weights and models will be saved to the output dir, for example ~/ST-Net/output/train_COVIDHCC_test_BC30007
 
 
+
+Preparing TCGA data (ignore if working on server)
+------
+Access the TCGA data and download it to from [here](https://portal.gdc.cancer.gov/repository?facetTab=files&filters=%7B%22op%22%3A%22and%22%2C%22content%22%3A%5B%7B%22content%22%3A%7B%22field%22%3A%22cases.project.project_id%22%2C%22value%22%3A%5B%22TCGA-LIHC%22%5D%7D%2C%22op%22%3A%22in%22%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22files.access%22%2C%22value%22%3A%5B%22open%22%5D%7D%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22files.data_format%22%2C%22value%22%3A%5B%22tsv%22%5D%7D%7D%2C%7B%22content%22%3A%7B%22field%22%3A%22files.experimental_strategy%22%2C%22value%22%3A%5B%22RNA-Seq%22%5D%7D%2C%22op%22%3A%22in%22%7D%5D%7D&searchTableTab=files) you will have to add all to cart and download it 
+
+unzip it, put the list of tsvs into ~/ST-Net/TCGA_preprocess/TCGA_map/tsvs
+and the metadata into ~/ST-Net/TCGA_preprocess/TCGA_map
+
+Preparing TCGA data for input into inference pipeline 
+------
+```
+cd ~/ST-Net/TCGA_preprocess/TCGA_map 
+python map_names.py  
+```
+
+1) Map the the downloaded raw counts info to TCGA images and extract the top and bottom x configurable in script
+Based on selected images paired with raw counts data, generate 10% of the tiles as well as dummy data, renaming it to {gene}_tiled folder (e.g. ALB_tiled).
+```
+cd ~/ST-Net/TCGA_preprocess 
+python histolab_tile.py
+```
+
+2) Renaming of tiles and creation of other required data files
+```
+cd ~/ST-Net/TCGA_preprocess 
+python create_dummy.py 
+```
+Move the data files to data/hist2tscript
+python move_data.py 
+
+
+
+
+Inference 
+---------------
+```
+git checkout sam_inference
+```
+
+1) cp path/to/trained_weights ~/ST-Net/models/model_epoch_100
+example: ~/ST-Net/output/train_COVIDHCC_test_BC30007/BC30007_model.pt ~/ST-Net/models/**BC30007_epoch_100.pt** 
+important to follow the model naming conventions. 
+
+```
+cd ~/ST-Net/data/hist2tscript
+```
+2) edit the inference.sh file according to the model that you are using
+
+change model_to_load = "BC30007_100" for example if weight name is BC30007_epoch_100.pt
+trained_on = "BC300090" #change it to any data that has a .tif in the hist2tscript, doesn't matter
+
+3) change the start and end variables for a sequence of same numbers and comment out the bottom two lines. Else, to specify specific numbers, follow the examples listed in the file/
+start=53
+end=55
+#for i in $(seq $start $end);
+    #patient="BC300$i" 
+
+
+
+```
+bash inference.sh
+```
 
 
 Generate_figures 
 ---------------
 
-
-
 Figures can be generated by running:
 
 ```
+cd ~/ST-Net
 bash generate_figures.sh
 ```
 Before running this, change the gene types:
@@ -100,55 +185,31 @@ Before running this, change the gene types:
 2) Also change the piping  ("BC30001" | "BC30002" | "BC30003" | "BC30004" | "BC30005" | "BC30006" | "BC30007")
 
 
-They can then be found in this filepath, for example: 
+The folders with all the labels and post inference information, can be found in BC30007, for example: 
 
 ~/ST-Net/output_inference/COVID_HCC/BC30007_model/BC30007_visualize
  
 
-
-Preparing TCGA data
-------
-Access the TCGA data and download it to from [here](https://portal.gdc.cancer.gov/repository?facetTab=files&filters=%7B%22op%22%3A%22and%22%2C%22content%22%3A%5B%7B%22content%22%3A%7B%22field%22%3A%22cases.project.project_id%22%2C%22value%22%3A%5B%22TCGA-LIHC%22%5D%7D%2C%22op%22%3A%22in%22%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22files.access%22%2C%22value%22%3A%5B%22open%22%5D%7D%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22files.data_format%22%2C%22value%22%3A%5B%22tsv%22%5D%7D%7D%2C%7B%22content%22%3A%7B%22field%22%3A%22files.experimental_strategy%22%2C%22value%22%3A%5B%22RNA-Seq%22%5D%7D%2C%22op%22%3A%22in%22%7D%5D%7D&searchTableTab=files) 
-
-
-
-
-Inference 
----------------
-cp path/to/trained_weights ~/ST-Net/models
-
-change the inference.sh file to 
-
-change model_to_load = "BC30007_100" for example if weight fname is BC30007_epoch_100.pt
-trained_on = "BC300050" #change it to any data in your training set 
-```
-bash inference.sh
-```
-
-change the patient, ch
-
-change the start and end variables for a sequence of same numbers and comment out the bottom two lines. Else, to specify specific numbers, follow the examples listed in the file 
-start=53
-end=55
-#for i in $(seq $start $end);
-    #patient="BC300$i" 
-
-Generating figures
---------
-
 Generate TCGA_figures 
 ---------------
+Change the start and end to reflect the TCGA
+    start = 90 
+    end = 95
 
-
-Generate spatial transcriptomic expression info 
----------------
-
-
-Generate spatial transcriptomic expression info 
----------------
+cd abstract 
+python create_figs.py
 
 
 Generate boxplot of spearman's correlation (under sam_individual_window) 
+---------------
+git checkout sam_individual_window
+
+```
+git checkout sam_individual_window
+bash boxplot.sh 
+```
+
+
 
 
 ORIGINAL PAPER INSTRUCTIONS
