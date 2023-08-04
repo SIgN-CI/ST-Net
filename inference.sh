@@ -22,7 +22,7 @@ model_to_load="BC30007_100"
 ## Set the patients that the model was trained on
 # trained_on="BC30001 BC30002"
 # trained_on="BC30001 BC30002 BC30003"
-trained_on="BC30050"
+trained_on="BC30090"
 # trained_on="BC50027 BC50040 BC50111 BC51218 BC51517 BC52337 BC53934"
 # trained_on="BC50027 BC50040 BC50111 BC51218 BC51517 BC52337"
 
@@ -39,21 +39,21 @@ epochs=1
 # for patient in "BC30002"
 # for patient in "BC30003"
 # for patient in "BC30007"
-start=53
-end=55
-# for i in $(seq $start $end);
+start=90
+end=95
+for i in $(seq $start $end);
 #for patient in BC30020 BC30021 BC30022 BC30023 BC30024 BC30025 BC30030 BC30031 BC30032 BC30033 BC30034 BC30035 BC30040 BC30041 BC30042 BC30043 BC30044 BC30045 BC30010 BC30011 BC30012 BC30013 BC30014 BC30015
 # for patient in BC30021 BC30030 BC30031 BC30033 BC30041 BC30043
 # for patient in BC30010 BC30011 BC30012 BC30013 BC30014 BC30015
 # for patient in BC30013
 # for patient in "BC30005"
-for patient in BC30054
+# for patient in BC30054
 # for patient in "BC50027" "BC50040" "BC50111" "BC51218" "BC51517" "BC52337" "BC53934"
 # for patient in BC42334 BC42740 BC43740
 # for patient in BC42740
 # for patient in BC43740
 do
-    #patient="BC300$i" 
+    patient="BC300$i" 
     echo $patient
     case $patient in
           BC300**)
