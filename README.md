@@ -9,6 +9,11 @@ For more details, see the acompanying paper,
   <i>Nature Biomedical Engineering</i> (2020).
 
 
+**Meaning of different datasets**
+BC30001-4 is HCC1-4 in house data 
+BC3006-7 is the 80 20 split of HCC1
+BC30050-69 is the top and bottom 10 samples for TCGA on gene ALB
+BC30090-95 is the top and bottom 3 samples for TCGA on gene ALB 
 
 RUN ON IN-HOUSE DATASET
 -----------------------
@@ -16,16 +21,18 @@ RUN ON IN-HOUSE DATASET
 key folders, bash scripts and git branches
 ------
 branches:
+
 ```git checkout <insert branch name>```
 sam_individual_window (training) 
 sam_inference (inference) 
 
 script folders:
-data/hist2tscript
-generate_figures.sh
+~/ST-Net/TCGC_preprocess (where all the processing of TCGA image files are done)
+data/hist2tscript (where all data is placed for preparation by ST-Net)
 stnet
 
 output folders:
+
 (for training) ~/ST-Net/output/train_COVIDHCC_test_BC300xx/
 - BC300xx_visualize (figures generated)
 - BC30007_model.pt (saved model)
@@ -237,16 +244,39 @@ python create_abstract_figs.py --data-dir='../output_inference/COVID_HCC/BC30007
 
 ```
 
+Generate TCGA_figures 
+---------------
+```
+cd abstract
+
+python create_abstract_figs.py --data-dir='../output_inference/COVID_HCC/BC30007_model'
+
+```
+
 Generate boxplot of spearman's correlation (under sam_individual_window) 
 ---------------
 
 ```
 git checkout sam_individual_window
-cd ~/St-Net
+cd ~/ST-Net
 bash boxplot.sh 
 ```
 
+Generate the loss
+---------------
 
+```
+git checkout sam_individual_window
+vim best_loss.sh
+```
+
+change the --npz_path in best_loss.sh
+
+```
+bash best_loss.sh
+```
+
+Files will be generated in the folder of the npz path
 
 ORIGINAL PAPER INSTRUCTIONS
 ---------------------------
