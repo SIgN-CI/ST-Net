@@ -9,11 +9,15 @@ For more details, see the acompanying paper,
   <i>Nature Biomedical Engineering</i> (2020).
 
 
+
 **Meaning of different datasets**
 BC30001-4 is HCC1-4 in house data 
 BC3006-7 is the 80 20 split of HCC1
 BC30050-69 is the top and bottom 10 samples for TCGA on gene ALB
 BC30090-95 is the top and bottom 3 samples for TCGA on gene ALB 
+
+**MAYA alignment file**
+~/STnet_Samuel/MAYA/Visium_data/align_masks.py
 
 RUN ON IN-HOUSE DATASET
 -----------------------
