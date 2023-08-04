@@ -195,10 +195,10 @@ Generate TCGA_figures
 Change the start and end to reflect the TCGA
     start = 90 
     end = 95
-
+```
 cd abstract 
 python create_figs.py
-
+```
 
 Generate boxplot of spearman's correlation (under sam_individual_window) 
 ---------------
